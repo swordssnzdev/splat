@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://chhq0erdkrp78"]
 
-[ext_resource type="Script" path="res://scripts/bush.gd" id="1_hvwxu"]
+[ext_resource type="Script" path="res://scripts/destructible.gd" id="1_al4e6"]
 [ext_resource type="Texture2D" uid="uid://cvwykaqqo0idg" path="res://assets/sprites/bush.png" id="2_8krc2"]
 [ext_resource type="AudioStream" uid="uid://b3lcxgtcjm601" path="res://assets/sounds/entities/freesound_com_porkmuncher__leaves_impact.wav" id="3_7ewxh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_625dm"]
 radius = 15.2971
 
-[node name="Bush" type="Area2D"]
+[node name="Destructible" type="Area2D"]
 z_index = 25
 z_as_relative = false
 position = Vector2(103, -23)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_hvwxu")
+script = ExtResource("1_al4e6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 7)

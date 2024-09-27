@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
+# State machine
 enum State {DEFAULT, BUILDUP, SNZ_GROUND, SNZ_JUMP, RECOVER}
 
 const BASE_SPEED = 150.0
 const BASE_JUMP_VELOCITY = -300.0
 const BASE_BUILDUP_LENGTH = 100
 const BASE_SNZ_INTERVAL = 250
-
 const SNZ_JUMP_VELOCITY = -500.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -18,7 +18,9 @@ const SNZ_JUMP_VELOCITY = -500.0
 @onready var buildup_audio_stream_player_2d: AudioStreamPlayer2D = $BuildupAudioStreamPlayer2D
 
 var state = State.DEFAULT
+# Count down to snz
 var buildupProgress = BASE_BUILDUP_LENGTH
+# Count down to start of buildup
 var nextSnzProgress = BASE_SNZ_INTERVAL
 var vrotation = 0
 
@@ -36,13 +38,16 @@ func goToState(s: State) -> void:
 			buildupProgress = BASE_BUILDUP_LENGTH
 			pass
 		State.SNZ_GROUND:
+			# I wanted particles but they don't work on my computer
 			attacksnz_animation_player.play("spray")
 			animation_player.play("snz")
 			snz_audio_stream_player_2d.play()
 			pass
 		State.SNZ_JUMP:
+			# Start spinning
 			vrotation = 1
 		State.RECOVER:
+			# Stop moving
 			velocity = Vector2.ZERO
 			vrotation = 0
 			sprite_2d.set_rotation(0)
@@ -56,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		die()
 		return
 	
-	# Add the gravity.
+	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -72,18 +77,21 @@ func _physics_process(delta: float) -> void:
 
 			if direction:
 				velocity.x = direction * BASE_SPEED
-			else:
+			else: # Slow down
 				velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 				
 			if Input.is_action_just_pressed("debug_snz") || nextSnzProgress <= 0:
 				goToState(State.BUILDUP)
 		State.BUILDUP:
+			# Speed up animation as buildup progresses
 			animation_player.speed_scale = 1 + 8 * (BASE_BUILDUP_LENGTH - buildupProgress) / BASE_BUILDUP_LENGTH
 			if direction:
+				# Slow down movement as buildup progresses
 				velocity.x = direction * BASE_SPEED * (buildupProgress * 1.0 / BASE_BUILDUP_LENGTH)
 			else:
 				velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			
+			# For the first 75% of the buildup, play buildup sounds that increase in pitch and volume
 			if !buildup_audio_stream_player_2d.is_playing() && buildupProgress > BASE_BUILDUP_LENGTH * 0.25:
 				buildup_audio_stream_player_2d.set_pitch_scale(1 + (BASE_BUILDUP_LENGTH - buildupProgress) / (BASE_BUILDUP_LENGTH * 5))
 				buildup_audio_stream_player_2d.set_volume_db((BASE_BUILDUP_LENGTH - buildupProgress) / BASE_BUILDUP_LENGTH)
@@ -91,7 +99,7 @@ func _physics_process(delta: float) -> void:
 			
 			buildupProgress -= delta * 100
 			if buildupProgress <= 0:
-				animation_player.speed_scale = 1
+				animation_player.speed_scale = 1 # Reset
 				goToState(State.SNZ_GROUND)
 		State.SNZ_GROUND:
 			if Input.is_action_pressed("jump") and is_on_floor():
@@ -102,11 +110,15 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor():
 				goToState(State.RECOVER)
 			else:
+				# Can't control if snz on the ground, but more fun to be able to control the jump
+				# TODO pull this out, it's used in a few places
 				if direction:
 					velocity.x = direction * BASE_SPEED
 				else:
 					velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
+				# Spin!
 				sprite_2d.set_rotation(sprite_2d.get_rotation() + vrotation)
+				# Decrease the spin speed
 				vrotation = move_toward(vrotation, 0, 5 * delta)
 		State.RECOVER:
 			pass
