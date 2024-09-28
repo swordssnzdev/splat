@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # State machine
-enum State {NO_SNZ, DEFAULT, BUILDUP, SNZ_GROUND, SNZ_JUMP, RECOVER}
+enum State {NO_SNZ, DEFAULT, BUILDUP, SNZ_GROUND, SNZ_JUMP, RECOVER, BLOW}
 
 const BASE_SPEED = 150.0
 const BASE_JUMP_VELOCITY = -300.0
@@ -29,13 +29,16 @@ var buildupProgress = BASE_BUILDUP_LENGTH
 var nextSnzProgress = BASE_SNZ_INTERVAL
 var vrotation = 0
 
-
+func _ready() -> void:
+	animation_player.play("no_snz")
 
 func goToState(s: State) -> void:
 	if state == s:
 		return
 		
 	match s:
+		State.NO_SNZ:
+			animation_player.play("no_snz")
 		State.DEFAULT:
 			if state == State.RECOVER && !snz_audio_stream_player_2d.is_playing():
 				recover_audio_stream_player_2d.play()
@@ -62,6 +65,10 @@ func goToState(s: State) -> void:
 			sprite_2d.set_rotation(0)
 			animation_player.play("recover")
 			pass
+		State.BLOW:
+			velocity = Vector2.ZERO
+			animation_player.play("blow")
+			blow_audio_stream_player_2d.play()
 	
 	state = s
 
@@ -78,27 +85,11 @@ func _physics_process(delta: float) -> void:
 
 	match state:
 		State.NO_SNZ:
-			# Handle jump.
-			if Input.is_action_just_pressed("jump") and is_on_floor():
-				velocity.y = BASE_JUMP_VELOCITY
-
-			if direction:
-				velocity.x = direction * BASE_SPEED
-			else: # Slow down
-				velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
+			walk(direction)
 		State.DEFAULT:
 			nextSnzProgress -= delta * 100
-			
-			# Handle jump.
-			if Input.is_action_just_pressed("jump") and is_on_floor():
-				velocity.y = BASE_JUMP_VELOCITY
-
-			if direction:
-				velocity.x = direction * BASE_SPEED
-			else: # Slow down
-				velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
-				
-			if Input.is_action_just_pressed("debug_snz") || nextSnzProgress <= 0:
+			walk(direction)
+			if nextSnzProgress <= 0 || Input.is_action_just_pressed("debug_snz"):
 				goToState(State.BUILDUP)
 		State.BUILDUP:
 			# Speed up animation as buildup progresses
@@ -140,6 +131,8 @@ func _physics_process(delta: float) -> void:
 				vrotation = move_toward(vrotation, 0, 5 * delta)
 		State.RECOVER:
 			pass
+		State.BLOW:
+			pass
 		
 	if direction:
 		sprite_2d.flip_h = velocity.x < 0
@@ -155,13 +148,26 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 					goToState(State.RECOVER)
 		"recover":
 			goToState(State.DEFAULT)
+		"blow":
+			goToState(State.NO_SNZ)
 
 func die():
-	blow_audio_stream_player_2d.play()
-
-func _on_blow_audio_stream_player_2d_finished():
 	get_tree().reload_current_scene()
 
+func walk(direction):
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = BASE_JUMP_VELOCITY
+
+	if direction:
+		velocity.x = direction * BASE_SPEED
+		animation_player.play()
+	else: # Slow down
+		if sprite_2d.get_frame() == 0:
+			animation_player.pause()
+		velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
+		
+	if Input.is_action_just_pressed("blow"):
+		goToState(State.BLOW)
 
 func _on_trigger() -> void:
 	if state == State.NO_SNZ:
