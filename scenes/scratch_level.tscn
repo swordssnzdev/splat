@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://clq1dhuuohgjo"]
+[gd_scene load_steps=13 format=4 uid="uid://clq1dhuuohgjo"]
 
 [ext_resource type="Texture2D" uid="uid://xd7254rcrtip" path="res://assets/tiles/scratch.png" id="1_rwogo"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_1yd7u"]
+[ext_resource type="Script" path="res://scenes/trigger.gd" id="5_7grgv"]
+[ext_resource type="Texture2D" uid="uid://dfuiyjxkuf0d3" path="res://assets/sprites/flowers.png" id="5_13p23"]
 [ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible_bush.tscn" id="6_wt135"]
 [ext_resource type="PackedScene" uid="uid://c3kij1hjuxqd7" path="res://scenes/desctructible_board.tscn" id="26_04dqb"]
 
@@ -18,6 +20,46 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_y1unv")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pps5e"]
+radius = 14.0357
+
+[sub_resource type="Animation" id="Animation_ksk17"]
+resource_name = "activate"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_qdgbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwybl"]
+_data = {
+"RESET": SubResource("Animation_qdgbb"),
+"activate": SubResource("Animation_ksk17")
+}
+
 [node name="Scratch Level" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -26,7 +68,7 @@ tile_map_data = PackedByteArray("AAD7/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAA
 tile_set = SubResource("TileSet_iao46")
 
 [node name="Player" parent="." instance=ExtResource("2_1yd7u")]
-position = Vector2(-201, 1)
+position = Vector2(-147, 3)
 metadata/_edit_group_ = true
 
 [node name="Destructible" type="Node" parent="."]
@@ -42,12 +84,6 @@ position = Vector2(26, -12)
 
 [node name="Bush4" parent="Destructible" instance=ExtResource("6_wt135")]
 position = Vector2(-34, -13)
-
-[node name="Bush5" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(-75, -10)
-
-[node name="Bush6" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(-127, -13)
 
 [node name="Bush7" parent="Destructible" instance=ExtResource("6_wt135")]
 position = Vector2(558, -46)
@@ -78,3 +114,25 @@ position = Vector2(878, 20)
 
 [node name="Board3" parent="Destructible" instance=ExtResource("26_04dqb")]
 position = Vector2(1003, -269)
+
+[node name="Trigger" type="Area2D" parent="."]
+position = Vector2(-73, -2)
+script = ExtResource("5_7grgv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trigger"]
+position = Vector2(-7, -5)
+texture = ExtResource("5_13p23")
+hframes = 2
+vframes = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(-6, -8)
+shape = SubResource("CircleShape2D_pps5e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Trigger"]
+libraries = {
+"": SubResource("AnimationLibrary_bwybl")
+}
+
+[connection signal="body_entered" from="Trigger" to="Trigger" method="_on_body_entered"]

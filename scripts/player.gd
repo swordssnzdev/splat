@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
 # State machine
-enum State {DEFAULT, BUILDUP, SNZ_GROUND, SNZ_JUMP, RECOVER}
+enum State {NO_SNZ, DEFAULT, BUILDUP, SNZ_GROUND, SNZ_JUMP, RECOVER}
 
 const BASE_SPEED = 150.0
 const BASE_JUMP_VELOCITY = -300.0
 const BASE_BUILDUP_LENGTH = 100
 const BASE_SNZ_INTERVAL = 250
 const SNZ_JUMP_VELOCITY = -500.0
+
+signal trigger
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -17,13 +19,17 @@ const SNZ_JUMP_VELOCITY = -500.0
 @onready var blow_audio_stream_player_2d: AudioStreamPlayer2D = $BlowAudioStreamPlayer2D
 @onready var buildup_audio_stream_player_2d: AudioStreamPlayer2D = $BuildupAudioStreamPlayer2D
 @onready var recover_audio_stream_player_2d: AudioStreamPlayer2D = $RecoverAudioStreamPlayer2D
+@onready var trigger_audio_stream_player_2d: AudioStreamPlayer2D = $TriggerAudioStreamPlayer2D
 
-var state = State.DEFAULT
+
+var state = State.NO_SNZ
 # Count down to snz
 var buildupProgress = BASE_BUILDUP_LENGTH
 # Count down to start of buildup
 var nextSnzProgress = BASE_SNZ_INTERVAL
 var vrotation = 0
+
+
 
 func goToState(s: State) -> void:
 	if state == s:
@@ -33,7 +39,7 @@ func goToState(s: State) -> void:
 		State.DEFAULT:
 			if state == State.RECOVER && !snz_audio_stream_player_2d.is_playing():
 				recover_audio_stream_player_2d.play()
-			nextSnzProgress = BASE_SNZ_INTERVAL
+			nextSnzProgress = 0 if state == State.NO_SNZ else BASE_SNZ_INTERVAL
 			animation_player.play("default")
 			pass
 		State.BUILDUP:
@@ -71,6 +77,15 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 
 	match state:
+		State.NO_SNZ:
+			# Handle jump.
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = BASE_JUMP_VELOCITY
+
+			if direction:
+				velocity.x = direction * BASE_SPEED
+			else: # Slow down
+				velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 		State.DEFAULT:
 			nextSnzProgress -= delta * 100
 			
@@ -146,3 +161,9 @@ func die():
 
 func _on_blow_audio_stream_player_2d_finished():
 	get_tree().reload_current_scene()
+
+
+func _on_trigger() -> void:
+	if state == State.NO_SNZ:
+		trigger_audio_stream_player_2d.play()
+		goToState(State.DEFAULT)
