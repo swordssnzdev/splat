@@ -1,16 +1,22 @@
-[gd_scene load_steps=37 format=3 uid="uid://tmvbbkdw2g81"]
+[gd_scene load_steps=60 format=3 uid="uid://tmvbbkdw2g81"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_apf0w"]
-[ext_resource type="Texture2D" uid="uid://c2eiybcg2f413" path="res://assets/sprites/v2 (1).png" id="2_j8okv"]
+[ext_resource type="Texture2D" uid="uid://bntvf6marp5ky" path="res://assets/sprites/player_swords_v2.png" id="2_4e0dg"]
 [ext_resource type="AudioStream" uid="uid://duqeb1ussu4py" path="res://assets/sounds/player/swords/snz/s01.wav" id="3_ii45o"]
+[ext_resource type="AudioStream" uid="uid://bndrdsfbexyxk" path="res://assets/sounds/player/swords/trigger/t01.wav" id="3_k1ym3"]
+[ext_resource type="AudioStream" uid="uid://cnvjkhergv0ch" path="res://assets/sounds/player/swords/trigger/t02.wav" id="4_a44ee"]
 [ext_resource type="AudioStream" uid="uid://5fg3v0nmouu2" path="res://assets/sounds/player/swords/snz/s02.wav" id="4_lh681"]
 [ext_resource type="AudioStream" uid="uid://bei107r00wyjb" path="res://assets/sounds/player/swords/snz/s11.wav" id="5_lfy2h"]
+[ext_resource type="AudioStream" uid="uid://b0ob3eoul2gc6" path="res://assets/sounds/player/swords/trigger/t03.wav" id="5_tvr0e"]
+[ext_resource type="AudioStream" uid="uid://bvkp1xmsqfp5b" path="res://assets/sounds/player/swords/trigger/t04.wav" id="6_fc1sv"]
 [ext_resource type="AudioStream" uid="uid://dipt1wsqy2mn" path="res://assets/sounds/player/swords/snz/s12.wav" id="6_ynad4"]
 [ext_resource type="AudioStream" uid="uid://cb8v6vj26fmp7" path="res://assets/sounds/player/swords/snz/s13.wav" id="7_mlvpf"]
 [ext_resource type="AudioStream" uid="uid://44budcex17yi" path="res://assets/sounds/player/swords/snz/s14.wav" id="8_x8flc"]
 [ext_resource type="AudioStream" uid="uid://b0bdsjpfe5w3e" path="res://assets/sounds/player/swords/snz/s15.wav" id="9_022o7"]
 [ext_resource type="AudioStream" uid="uid://dcf801u56fq3p" path="res://assets/sounds/player/swords/snz/s16.wav" id="10_cyt5v"]
 [ext_resource type="AudioStream" uid="uid://5hh0tveiek27" path="res://assets/sounds/player/swords/snz/s03.wav" id="11_epidp"]
+[ext_resource type="AudioStream" uid="uid://craob2n6kklqx" path="res://assets/sounds/player/swords/snz/s17.wav" id="11_n6mcg"]
+[ext_resource type="AudioStream" uid="uid://ccbpa4q8oeg5x" path="res://assets/sounds/player/swords/snz/s18.wav" id="12_xa70t"]
 [ext_resource type="AudioStream" uid="uid://c277qflu16alm" path="res://assets/sounds/player/swords/snz/s04.wav" id="12_ye76j"]
 [ext_resource type="AudioStream" uid="uid://cuxpatruhhdk3" path="res://assets/sounds/player/swords/snz/s05.wav" id="13_4l67w"]
 [ext_resource type="AudioStream" uid="uid://dprjdnwukfvqq" path="res://assets/sounds/player/swords/snz/s06.wav" id="14_k8ela"]
@@ -20,9 +26,21 @@
 [ext_resource type="AudioStream" uid="uid://dp2s5hjn3oxqt" path="res://assets/sounds/player/swords/snz/s10.wav" id="18_n1dlj"]
 [ext_resource type="AudioStream" uid="uid://b5pfwfcp24wfo" path="res://assets/sounds/player/swords/blow/b01.wav" id="19_3ixuv"]
 [ext_resource type="AudioStream" uid="uid://miehlkdokr8y" path="res://assets/sounds/player/swords/buildup/u01.wav" id="20_lw1rh"]
+[ext_resource type="AudioStream" uid="uid://dqrqxvxvpf85g" path="res://assets/sounds/player/swords/recover/r01.wav" id="20_nktfu"]
+[ext_resource type="AudioStream" uid="uid://chrakoan2teyh" path="res://assets/sounds/player/swords/recover/r02.wav" id="21_er4qt"]
 [ext_resource type="AudioStream" uid="uid://c1nmia34cud40" path="res://assets/sounds/player/swords/buildup/u02.wav" id="21_qpd0o"]
 [ext_resource type="Texture2D" uid="uid://cmpi0xap11ciq" path="res://assets/sprites/spray.png" id="22_fx43x"]
+[ext_resource type="AudioStream" uid="uid://dokbmjlhkwh3h" path="res://assets/sounds/player/swords/recover/r03.wav" id="22_lkfj7"]
 [ext_resource type="Script" path="res://scripts/snz_sprite.gd" id="23_tat0y"]
+[ext_resource type="AudioStream" uid="uid://c12khtxapraqt" path="res://assets/sounds/player/swords/recover/r05.wav" id="23_v7h4o"]
+[ext_resource type="AudioStream" uid="uid://dxaeran3lvp0q" path="res://assets/sounds/player/swords/recover/r06.wav" id="24_gu2yc"]
+[ext_resource type="AudioStream" uid="uid://d2c1nijtx5tpl" path="res://assets/sounds/player/swords/recover/r04.wav" id="25_uaw4w"]
+[ext_resource type="AudioStream" uid="uid://qkotx14mcvmq" path="res://assets/sounds/player/swords/recover/r07.wav" id="26_dgwnr"]
+[ext_resource type="AudioStream" uid="uid://cqllx6sbjem4p" path="res://assets/sounds/player/swords/buildup/u03.wav" id="29_2m22q"]
+[ext_resource type="AudioStream" uid="uid://c3od6p3y2f5qf" path="res://assets/sounds/player/swords/buildup/u04.wav" id="30_xsoiy"]
+[ext_resource type="AudioStream" uid="uid://bexg5yk7fm5pl" path="res://assets/sounds/player/swords/recover/r08.wav" id="31_aymoh"]
+[ext_resource type="AudioStream" uid="uid://dvw8admvu3u32" path="res://assets/sounds/player/swords/buildup/u05.wav" id="31_s652b"]
+[ext_resource type="AudioStream" uid="uid://bgw7cukyulufe" path="res://assets/sounds/player/swords/recover/r09.wav" id="32_itqea"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exri5"]
 radius = 4.0
@@ -56,12 +74,14 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 2]
+"values": [4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_bskg4"]
 resource_name = "default"
+length = 0.6
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -69,10 +89,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_5gjw7"]
@@ -89,7 +109,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3, 4, 3, 4, 3, 4, 3, 4]
+"values": [8, 9, 8, 9, 8, 9, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_a10tn"]
@@ -105,20 +125,79 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [5, 6]
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_34r21"]
+resource_name = "no_snz"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_rjav0"]
+resource_name = "blow"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 10, 11, 10, 11, 10, 11, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_e85ns"]
+resource_name = "resnz"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7kojh"]
 _data = {
 "RESET": SubResource("Animation_ntlw8"),
+"blow": SubResource("Animation_rjav0"),
 "buildup": SubResource("Animation_h28q1"),
 "default": SubResource("Animation_bskg4"),
+"no_snz": SubResource("Animation_34r21"),
 "recover": SubResource("Animation_5gjw7"),
+"resnz": SubResource("Animation_e85ns"),
 "snz": SubResource("Animation_a10tn")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ehl6k"]
+streams_count = 4
+stream_0/stream = ExtResource("3_k1ym3")
+stream_1/stream = ExtResource("4_a44ee")
+stream_2/stream = ExtResource("5_tvr0e")
+stream_3/stream = ExtResource("6_fc1sv")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_enevt"]
-streams_count = 16
+streams_count = 18
 stream_0/stream = ExtResource("3_ii45o")
 stream_1/stream = ExtResource("4_lh681")
 stream_2/stream = ExtResource("11_epidp")
@@ -135,11 +214,28 @@ stream_12/stream = ExtResource("7_mlvpf")
 stream_13/stream = ExtResource("8_x8flc")
 stream_14/stream = ExtResource("9_022o7")
 stream_15/stream = ExtResource("10_cyt5v")
+stream_16/stream = ExtResource("11_n6mcg")
+stream_17/stream = ExtResource("12_xa70t")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvufg"]
-streams_count = 2
+streams_count = 5
 stream_0/stream = ExtResource("20_lw1rh")
 stream_1/stream = ExtResource("21_qpd0o")
+stream_2/stream = ExtResource("29_2m22q")
+stream_3/stream = ExtResource("30_xsoiy")
+stream_4/stream = ExtResource("31_s652b")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8rm8p"]
+streams_count = 9
+stream_0/stream = ExtResource("20_nktfu")
+stream_1/stream = ExtResource("21_er4qt")
+stream_2/stream = ExtResource("22_lkfj7")
+stream_3/stream = ExtResource("25_uaw4w")
+stream_4/stream = ExtResource("23_v7h4o")
+stream_5/stream = ExtResource("24_gu2yc")
+stream_6/stream = ExtResource("26_dgwnr")
+stream_7/stream = ExtResource("31_aymoh")
+stream_8/stream = ExtResource("32_itqea")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flsid"]
 size = Vector2(39, 20)
@@ -245,7 +341,7 @@ position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -26)
-texture = ExtResource("2_j8okv")
+texture = ExtResource("2_4e0dg")
 hframes = 3
 vframes = 4
 
@@ -253,6 +349,10 @@ vframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_7kojh")
 }
+
+[node name="TriggerAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ehl6k")
+volume_db = 12.739
 
 [node name="SnzAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_enevt")
@@ -262,6 +362,9 @@ stream = ExtResource("19_3ixuv")
 
 [node name="BuildupAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_gvufg")
+
+[node name="RecoverAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8rm8p")
 
 [node name="AttackSnz" type="Area2D" parent="."]
 collision_layer = 2
@@ -285,5 +388,6 @@ libraries = {
 }
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="trigger" from="." to="." method="_on_trigger"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="BlowAudioStreamPlayer2D" to="." method="_on_blow_audio_stream_player_2d_finished"]
