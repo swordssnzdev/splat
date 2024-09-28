@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 # State machine
-enum State {NO_SNZ, DEFAULT, BUILDUP, SNZ_GROUND, SNZ_JUMP, RECOVER, BLOW}
+enum State {NO_SNZ, DEFAULT, BUILDUP, SNZ_GROUND, RESNZ_GROUND, SNZ_JUMP, RECOVER, BLOW}
 
 const BASE_SPEED = 150.0
 const BASE_JUMP_VELOCITY = -300.0
 const BASE_BUILDUP_LENGTH = 100
 const BASE_SNZ_INTERVAL = 250
 const SNZ_JUMP_VELOCITY = -500.0
+const RESNZ_RATE_ONE_IN_N = 2;
 
 signal trigger
 
@@ -33,7 +34,7 @@ func _ready() -> void:
 	animation_player.play("no_snz")
 
 func goToState(s: State) -> void:
-	if state == s:
+	if state == s && s != State.RESNZ_GROUND:
 		return
 		
 	match s:
@@ -54,7 +55,13 @@ func goToState(s: State) -> void:
 			attacksnz_animation_player.play("spray")
 			animation_player.play("snz")
 			snz_audio_stream_player_2d.play()
-			pass
+		State.RESNZ_GROUND:
+			sprite_2d.flip_h = !sprite_2d.flip_h
+			attacksnz_animation_player.stop()
+			# I wanted particles but they don't work on my computer
+			attacksnz_animation_player.play("spray")
+			animation_player.play("resnz")
+			snz_audio_stream_player_2d.play()
 		State.SNZ_JUMP:
 			# Start spinning
 			vrotation = 1
@@ -107,6 +114,10 @@ func _physics_process(delta: float) -> void:
 				buildup_audio_stream_player_2d.play()
 			
 			buildupProgress -= delta * 100
+			
+			if direction:
+				sprite_2d.flip_h = velocity.x < 0
+			
 			if buildupProgress <= 0:
 				animation_player.speed_scale = 1 # Reset
 				goToState(State.SNZ_GROUND)
@@ -115,6 +126,8 @@ func _physics_process(delta: float) -> void:
 				velocity.y = SNZ_JUMP_VELOCITY
 				velocity.x = direction * BASE_SPEED
 				goToState(State.SNZ_JUMP)
+		State.RESNZ_GROUND:
+			pass
 		State.SNZ_JUMP:
 			if is_on_floor():
 				goToState(State.RECOVER)
@@ -129,27 +142,36 @@ func _physics_process(delta: float) -> void:
 				sprite_2d.set_rotation(sprite_2d.get_rotation() + vrotation)
 				# Decrease the spin speed
 				vrotation = move_toward(vrotation, 0, 5 * delta)
+				
+				if direction:
+					sprite_2d.flip_h = velocity.x < 0
+					attacksnz_sprite_2d.flip_h = velocity.x < 0
 		State.RECOVER:
 			pass
 		State.BLOW:
 			pass
-		
-	if direction:
-		sprite_2d.flip_h = velocity.x < 0
-		attacksnz_sprite_2d.flip_h = velocity.x < 0
 
+
+	attacksnz_sprite_2d.flip_h = sprite_2d.flip_h
 	move_and_slide()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		"snz":
-			match state:
-				State.SNZ_GROUND:
-					goToState(State.RECOVER)
+			end_snz()
+		"resnz":
+			end_snz()
 		"recover":
 			goToState(State.DEFAULT)
 		"blow":
 			goToState(State.NO_SNZ)
+
+func end_snz():
+	if state == State.SNZ_GROUND || state == State.RESNZ_GROUND:
+		if randi() % RESNZ_RATE_ONE_IN_N == 1:
+			goToState(State.RESNZ_GROUND)
+		else:
+			goToState(State.RECOVER)
 
 func die():
 	get_tree().reload_current_scene()
@@ -159,6 +181,8 @@ func walk(direction):
 		velocity.y = BASE_JUMP_VELOCITY
 
 	if direction:
+		sprite_2d.flip_h = velocity.x < 0
+		attacksnz_sprite_2d.flip_h = velocity.x < 0
 		velocity.x = direction * BASE_SPEED
 		animation_player.play()
 	else: # Slow down
@@ -166,8 +190,11 @@ func walk(direction):
 			animation_player.pause()
 		velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 		
+	
+	
 	if Input.is_action_just_pressed("blow"):
 		goToState(State.BLOW)
+	
 
 func _on_trigger() -> void:
 	if state == State.NO_SNZ:

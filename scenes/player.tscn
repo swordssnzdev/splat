@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://tmvbbkdw2g81"]
+[gd_scene load_steps=58 format=3 uid="uid://tmvbbkdw2g81"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_apf0w"]
 [ext_resource type="Texture2D" uid="uid://bntvf6marp5ky" path="res://assets/sprites/player_swords_v2.png" id="2_4e0dg"]
@@ -159,6 +159,22 @@ tracks/0/keys = {
 "values": [10, 11, 10, 11, 10, 11, 10, 11, 10, 11]
 }
 
+[sub_resource type="Animation" id="Animation_e85ns"]
+resource_name = "resnz"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7kojh"]
 _data = {
 "RESET": SubResource("Animation_ntlw8"),
@@ -167,6 +183,7 @@ _data = {
 "default": SubResource("Animation_bskg4"),
 "no_snz": SubResource("Animation_34r21"),
 "recover": SubResource("Animation_5gjw7"),
+"resnz": SubResource("Animation_e85ns"),
 "snz": SubResource("Animation_a10tn")
 }
 
