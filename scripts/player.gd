@@ -16,6 +16,7 @@ const SNZ_JUMP_VELOCITY = -500.0
 @onready var snz_audio_stream_player_2d: AudioStreamPlayer2D = $SnzAudioStreamPlayer2D
 @onready var blow_audio_stream_player_2d: AudioStreamPlayer2D = $BlowAudioStreamPlayer2D
 @onready var buildup_audio_stream_player_2d: AudioStreamPlayer2D = $BuildupAudioStreamPlayer2D
+@onready var recover_audio_stream_player_2d: AudioStreamPlayer2D = $RecoverAudioStreamPlayer2D
 
 var state = State.DEFAULT
 # Count down to snz
@@ -30,6 +31,8 @@ func goToState(s: State) -> void:
 		
 	match s:
 		State.DEFAULT:
+			if state == State.RECOVER && !snz_audio_stream_player_2d.is_playing():
+				recover_audio_stream_player_2d.play()
 			nextSnzProgress = BASE_SNZ_INTERVAL
 			animation_player.play("default")
 			pass
