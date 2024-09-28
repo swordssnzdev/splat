@@ -21,13 +21,15 @@ signal trigger
 @onready var buildup_audio_stream_player_2d: AudioStreamPlayer2D = $BuildupAudioStreamPlayer2D
 @onready var recover_audio_stream_player_2d: AudioStreamPlayer2D = $RecoverAudioStreamPlayer2D
 @onready var trigger_audio_stream_player_2d: AudioStreamPlayer2D = $TriggerAudioStreamPlayer2D
-
+@onready var snz_jump_timer: Timer = $SnzJumpTimer
 
 var state = State.NO_SNZ
 # Count down to snz
 var buildupProgress = BASE_BUILDUP_LENGTH
 # Count down to start of buildup
 var nextSnzProgress = BASE_SNZ_INTERVAL
+# Enough snz time has elapsed for the jump to start
+var canJump
 var vrotation = 0
 
 func _ready() -> void:
@@ -55,6 +57,7 @@ func goToState(s: State) -> void:
 			attacksnz_animation_player.play("spray")
 			animation_player.play("snz")
 			snz_audio_stream_player_2d.play()
+			snz_jump_timer.start()
 		State.RESNZ_GROUND:
 			sprite_2d.flip_h = !sprite_2d.flip_h
 			attacksnz_animation_player.stop()
@@ -122,7 +125,7 @@ func _physics_process(delta: float) -> void:
 				animation_player.speed_scale = 1 # Reset
 				goToState(State.SNZ_GROUND)
 		State.SNZ_GROUND:
-			if Input.is_action_pressed("jump") and is_on_floor():
+			if Input.is_action_pressed("jump") && is_on_floor() && snz_jump_timer.is_stopped():
 				velocity.y = SNZ_JUMP_VELOCITY
 				velocity.x = direction * BASE_SPEED
 				goToState(State.SNZ_JUMP)

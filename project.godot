@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Splat"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/jmp/OneDrive/Documents/splat/demos/video.avi"
+
 [input]
 
 left={
