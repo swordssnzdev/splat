@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://tmvbbkdw2g81"]
+[gd_scene load_steps=60 format=3 uid="uid://tmvbbkdw2g81"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_apf0w"]
 [ext_resource type="Texture2D" uid="uid://bntvf6marp5ky" path="res://assets/sprites/player_swords_v2.png" id="2_4e0dg"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://bvkp1xmsqfp5b" path="res://assets/sounds/player/swords/trigger/t04.wav" id="6_fc1sv"]
 [ext_resource type="AudioStream" uid="uid://dipt1wsqy2mn" path="res://assets/sounds/player/swords/snz/s12.wav" id="6_ynad4"]
 [ext_resource type="AudioStream" uid="uid://cb8v6vj26fmp7" path="res://assets/sounds/player/swords/snz/s13.wav" id="7_mlvpf"]
-[ext_resource type="AudioStream" uid="uid://dsywalbjxoub4" path="res://assets/sounds/player/swords/trigger/t05.wav" id="7_vblf7"]
 [ext_resource type="AudioStream" uid="uid://44budcex17yi" path="res://assets/sounds/player/swords/snz/s14.wav" id="8_x8flc"]
 [ext_resource type="AudioStream" uid="uid://b0bdsjpfe5w3e" path="res://assets/sounds/player/swords/snz/s15.wav" id="9_022o7"]
 [ext_resource type="AudioStream" uid="uid://dcf801u56fq3p" path="res://assets/sounds/player/swords/snz/s16.wav" id="10_cyt5v"]
@@ -37,7 +36,10 @@
 [ext_resource type="AudioStream" uid="uid://dxaeran3lvp0q" path="res://assets/sounds/player/swords/recover/r06.wav" id="24_gu2yc"]
 [ext_resource type="AudioStream" uid="uid://d2c1nijtx5tpl" path="res://assets/sounds/player/swords/recover/r04.wav" id="25_uaw4w"]
 [ext_resource type="AudioStream" uid="uid://qkotx14mcvmq" path="res://assets/sounds/player/swords/recover/r07.wav" id="26_dgwnr"]
+[ext_resource type="AudioStream" uid="uid://cqllx6sbjem4p" path="res://assets/sounds/player/swords/buildup/u03.wav" id="29_2m22q"]
+[ext_resource type="AudioStream" uid="uid://c3od6p3y2f5qf" path="res://assets/sounds/player/swords/buildup/u04.wav" id="30_xsoiy"]
 [ext_resource type="AudioStream" uid="uid://bexg5yk7fm5pl" path="res://assets/sounds/player/swords/recover/r08.wav" id="31_aymoh"]
+[ext_resource type="AudioStream" uid="uid://dvw8admvu3u32" path="res://assets/sounds/player/swords/buildup/u05.wav" id="31_s652b"]
 [ext_resource type="AudioStream" uid="uid://bgw7cukyulufe" path="res://assets/sounds/player/swords/recover/r09.wav" id="32_itqea"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exri5"]
@@ -188,12 +190,11 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ehl6k"]
-streams_count = 5
+streams_count = 4
 stream_0/stream = ExtResource("3_k1ym3")
 stream_1/stream = ExtResource("4_a44ee")
 stream_2/stream = ExtResource("5_tvr0e")
 stream_3/stream = ExtResource("6_fc1sv")
-stream_4/stream = ExtResource("7_vblf7")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_enevt"]
 streams_count = 18
@@ -217,9 +218,12 @@ stream_16/stream = ExtResource("11_n6mcg")
 stream_17/stream = ExtResource("12_xa70t")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvufg"]
-streams_count = 2
+streams_count = 5
 stream_0/stream = ExtResource("20_lw1rh")
 stream_1/stream = ExtResource("21_qpd0o")
+stream_2/stream = ExtResource("29_2m22q")
+stream_3/stream = ExtResource("30_xsoiy")
+stream_4/stream = ExtResource("31_s652b")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8rm8p"]
 streams_count = 9
@@ -348,7 +352,7 @@ libraries = {
 
 [node name="TriggerAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ehl6k")
-volume_db = 20.688
+volume_db = 12.739
 
 [node name="SnzAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_enevt")

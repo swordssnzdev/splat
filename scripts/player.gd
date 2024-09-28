@@ -107,10 +107,10 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 			
-			# For the first 75% of the buildup, play buildup sounds that increase in pitch and volume
-			if !buildup_audio_stream_player_2d.is_playing() && buildupProgress > BASE_BUILDUP_LENGTH * 0.25:
+			# For the first 90% of the buildup, play buildup sounds that increase in pitch and volume
+			if !trigger_audio_stream_player_2d.is_playing() && !buildup_audio_stream_player_2d.is_playing() && buildupProgress > BASE_BUILDUP_LENGTH * 0.1:
 				buildup_audio_stream_player_2d.set_pitch_scale(1 + (BASE_BUILDUP_LENGTH - buildupProgress) / (BASE_BUILDUP_LENGTH * 5))
-				buildup_audio_stream_player_2d.set_volume_db((BASE_BUILDUP_LENGTH - buildupProgress) / BASE_BUILDUP_LENGTH)
+				buildup_audio_stream_player_2d.set_volume_db(5 + 5 * (BASE_BUILDUP_LENGTH - buildupProgress) / BASE_BUILDUP_LENGTH)
 				buildup_audio_stream_player_2d.play()
 			
 			buildupProgress -= delta * 100
@@ -186,7 +186,7 @@ func walk(direction):
 		velocity.x = direction * BASE_SPEED
 		animation_player.play()
 	else: # Slow down
-		if sprite_2d.get_frame() == 0:
+		if sprite_2d.get_frame() == 0 || sprite_2d.get_frame() == 2:
 			animation_player.pause()
 		velocity.x = move_toward(velocity.x, 0, BASE_SPEED)
 		
