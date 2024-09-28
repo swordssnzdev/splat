@@ -53,6 +53,7 @@ func goToState(s: State) -> void:
 			buildupProgress = BASE_BUILDUP_LENGTH
 			pass
 		State.SNZ_GROUND:
+			velocity.x = 0
 			# I wanted particles but they don't work on my computer
 			attacksnz_animation_player.play("spray")
 			animation_player.play("snz")
