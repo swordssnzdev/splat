@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddbw3shgvuvaq"]
+
+[ext_resource type="Texture2D" uid="uid://cb5hasu8nihgv" path="res://assets/sprites/touchscreen_buttons/btnright.png" id="1_kxhpj"]
+[ext_resource type="Texture2D" uid="uid://cnv6hfum1qago" path="res://assets/sprites/touchscreen_buttons/btnup.png" id="2_a8ipx"]
+[ext_resource type="Texture2D" uid="uid://ckn1xtokgwpam" path="res://assets/sprites/touchscreen_buttons/btnleft.png" id="3_ftyhp"]
+[ext_resource type="Texture2D" uid="uid://chha8fwoekb6x" path="res://assets/sprites/touchscreen_buttons/btnblow.png" id="4_5384r"]
+
+[node name="Touchscreen" type="CanvasLayer"]
+
+[node name="RightTouchScreenButton2" type="TouchScreenButton" parent="."]
+position = Vector2(100, 560)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("1_kxhpj")
+action = "right"
+visibility_mode = 1
+
+[node name="JumpTouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(990, 560)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_a8ipx")
+action = "jump"
+visibility_mode = 1
+
+[node name="LeftTouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(20, 560)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_ftyhp")
+action = "left"
+visibility_mode = 1
+
+[node name="BlowTouchScreenButton2" type="TouchScreenButton" parent="."]
+position = Vector2(1070, 560)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_5384r")
+action = "blow"
+visibility_mode = 1

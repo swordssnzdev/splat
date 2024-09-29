@@ -1,8 +1,7 @@
-[gd_scene load_steps=61 format=3 uid="uid://tmvbbkdw2g81"]
+[gd_scene load_steps=60 format=3 uid="uid://tmvbbkdw2g81"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_apf0w"]
 [ext_resource type="Texture2D" uid="uid://bntvf6marp5ky" path="res://assets/sprites/player_swords_v2.png" id="2_4e0dg"]
-[ext_resource type="Texture2D" uid="uid://ct6wjpnoxjjak" path="res://assets/sprites/white_square.png" id="2_dnnke"]
 [ext_resource type="AudioStream" uid="uid://duqeb1ussu4py" path="res://assets/sounds/player/swords/snz/s01.wav" id="3_ii45o"]
 [ext_resource type="AudioStream" uid="uid://bndrdsfbexyxk" path="res://assets/sounds/player/swords/trigger/t01.wav" id="3_k1ym3"]
 [ext_resource type="AudioStream" uid="uid://cnvjkhergv0ch" path="res://assets/sounds/player/swords/trigger/t02.wav" id="4_a44ee"]
@@ -343,42 +342,6 @@ shape = SubResource("CapsuleShape2D_exri5")
 position = Vector2(0, -21)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
-
-[node name="Control" type="Control" parent="Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -171.0
-offset_top = 57.0
-offset_right = -131.0
-offset_bottom = 97.0
-
-[node name="LeftTouchScreenButton" type="TouchScreenButton" parent="Camera2D/Control"]
-position = Vector2(-16, 4)
-texture_normal = ExtResource("2_dnnke")
-action = "left"
-
-[node name="RightTouchScreenButton2" type="TouchScreenButton" parent="Camera2D/Control"]
-position = Vector2(23, 3)
-texture_normal = ExtResource("2_dnnke")
-action = "right"
-
-[node name="Control2" type="Control" parent="Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 126.0
-offset_top = 63.0
-offset_right = 166.0
-offset_bottom = 103.0
-
-[node name="JumpTouchScreenButton" type="TouchScreenButton" parent="Camera2D/Control2"]
-position = Vector2(-16, 4)
-texture_normal = ExtResource("2_dnnke")
-action = "jump"
-
-[node name="BlowTouchScreenButton2" type="TouchScreenButton" parent="Camera2D/Control2"]
-position = Vector2(23, 3)
-texture_normal = ExtResource("2_dnnke")
-action = "blow"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -26)
