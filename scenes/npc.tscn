@@ -1,0 +1,117 @@
+[gd_scene load_steps=20 format=3 uid="uid://cfqkstc7om2or"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_eyuup"]
+[ext_resource type="Texture2D" uid="uid://c7lkfo5u4gy0s" path="res://assets/sprites/npc1.png" id="2_bakw2"]
+[ext_resource type="AudioStream" uid="uid://mvp33mg7jdra" path="res://assets/sounds/npc/low/comment/c01.wav" id="3_55dy0"]
+[ext_resource type="AudioStream" uid="uid://dqi2u4x4b0jx4" path="res://assets/sounds/npc/low/comment/c02.wav" id="4_hmw4l"]
+[ext_resource type="AudioStream" uid="uid://cw28jc8me1vve" path="res://assets/sounds/npc/low/comment/c03.wav" id="5_igwp7"]
+[ext_resource type="AudioStream" uid="uid://byd5qydqb7t6f" path="res://assets/sounds/npc/low/comment/c04.wav" id="6_cx6ku"]
+[ext_resource type="AudioStream" uid="uid://bsmyu7mnlipck" path="res://assets/sounds/npc/low/ew/e01.wav" id="7_1ypsc"]
+[ext_resource type="AudioStream" uid="uid://bo6tcydxkpau2" path="res://assets/sounds/npc/low/ew/e02.wav" id="8_c0nmw"]
+[ext_resource type="AudioStream" uid="uid://djmgy8qyob4pt" path="res://assets/sounds/npc/low/ew/e03.wav" id="9_wcdgk"]
+[ext_resource type="AudioStream" uid="uid://bdusmks1nthml" path="res://assets/sounds/npc/low/ew/e04.wav" id="10_sps4b"]
+[ext_resource type="AudioStream" uid="uid://dqkrc1rvj8jx3" path="res://assets/sounds/npc/low/ew/e05.wav" id="11_cpsmp"]
+[ext_resource type="AudioStream" uid="uid://cfjvk4ohma3g2" path="res://assets/sounds/npc/low/ew/e06.wav" id="12_rbm0a"]
+[ext_resource type="AudioStream" uid="uid://dt1tywcb4oh4v" path="res://assets/sounds/npc/low/ew/e07.wav" id="13_ksdf7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4tqen"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_4afya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mb6sa"]
+resource_name = "walk"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sniu5"]
+_data = {
+"RESET": SubResource("Animation_4afya"),
+"walk": SubResource("Animation_mb6sa")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_icrby"]
+streams_count = 4
+stream_0/stream = ExtResource("3_55dy0")
+stream_1/stream = ExtResource("4_hmw4l")
+stream_2/stream = ExtResource("5_igwp7")
+stream_3/stream = ExtResource("6_cx6ku")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j0gv4"]
+streams_count = 7
+stream_0/stream = ExtResource("7_1ypsc")
+stream_1/stream = ExtResource("8_c0nmw")
+stream_2/stream = ExtResource("9_wcdgk")
+stream_3/stream = ExtResource("10_sps4b")
+stream_4/stream = ExtResource("11_cpsmp")
+stream_5/stream = ExtResource("12_rbm0a")
+stream_6/stream = ExtResource("13_ksdf7")
+
+[node name="NPC" type="Area2D"]
+position = Vector2(0, 3)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_eyuup")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 40
+position = Vector2(-72, -18)
+texture = ExtResource("2_bakw2")
+hframes = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-71, -17)
+shape = SubResource("CapsuleShape2D_4tqen")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sniu5")
+}
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(-71, -17)
+target_position = Vector2(16, 24)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(-71, -17)
+target_position = Vector2(-16, 24)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CommentAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_icrby")
+volume_db = 3.975
+
+[node name="EwAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_j0gv4")
+volume_db = 7.287
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
