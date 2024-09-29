@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://tmvbbkdw2g81"]
+[gd_scene load_steps=62 format=3 uid="uid://tmvbbkdw2g81"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_apf0w"]
 [ext_resource type="Texture2D" uid="uid://bntvf6marp5ky" path="res://assets/sprites/player_swords_v2.png" id="2_4e0dg"]
@@ -41,6 +41,7 @@
 [ext_resource type="AudioStream" uid="uid://bexg5yk7fm5pl" path="res://assets/sounds/player/swords/recover/r08.wav" id="31_aymoh"]
 [ext_resource type="AudioStream" uid="uid://dvw8admvu3u32" path="res://assets/sounds/player/swords/buildup/u05.wav" id="31_s652b"]
 [ext_resource type="AudioStream" uid="uid://bgw7cukyulufe" path="res://assets/sounds/player/swords/recover/r09.wav" id="32_itqea"]
+[ext_resource type="Script" path="res://scripts/collision_disabled.gd" id="42_04xi6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_exri5"]
 radius = 4.0
@@ -278,6 +279,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SnzAudible/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mk3s0"]
 resource_name = "spray"
@@ -318,12 +331,27 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SnzAudible/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.625),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v18vy"]
 _data = {
 "RESET": SubResource("Animation_3mdn6"),
 "spray": SubResource("Animation_mk3s0")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2bqb"]
+radius = 104.12
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 50
@@ -390,6 +418,15 @@ script = ExtResource("23_tat0y")
 libraries = {
 "": SubResource("AnimationLibrary_v18vy")
 }
+
+[node name="SnzAudible" type="Area2D" parent="AttackSnz"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSnz/SnzAudible"]
+position = Vector2(2, -28)
+shape = SubResource("CircleShape2D_y2bqb")
+script = ExtResource("42_04xi6")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="trigger" from="." to="." method="_on_trigger"]

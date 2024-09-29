@@ -1,13 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://clq1dhuuohgjo"]
+[gd_scene load_steps=9 format=4 uid="uid://clq1dhuuohgjo"]
 
 [ext_resource type="Texture2D" uid="uid://xd7254rcrtip" path="res://assets/tiles/scratch.png" id="1_rwogo"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_1yd7u"]
 [ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="5_4wyds"]
-[ext_resource type="Texture2D" uid="uid://cb5hasu8nihgv" path="res://assets/sprites/touchscreen_buttons/btnright.png" id="6_8rdlh"]
+[ext_resource type="PackedScene" uid="uid://ddbw3shgvuvaq" path="res://scenes/touchscreen.tscn" id="6_vxqgb"]
 [ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible_bush.tscn" id="6_wt135"]
-[ext_resource type="Texture2D" uid="uid://cnv6hfum1qago" path="res://assets/sprites/touchscreen_buttons/btnup.png" id="7_k3g72"]
-[ext_resource type="Texture2D" uid="uid://ckn1xtokgwpam" path="res://assets/sprites/touchscreen_buttons/btnleft.png" id="8_sh7nb"]
-[ext_resource type="Texture2D" uid="uid://chha8fwoekb6x" path="res://assets/sprites/touchscreen_buttons/btnblow.png" id="9_tr68n"]
 [ext_resource type="PackedScene" uid="uid://c3kij1hjuxqd7" path="res://scenes/desctructible_board.tscn" id="26_04dqb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1unv"]
@@ -83,28 +80,4 @@ position = Vector2(1003, -269)
 [node name="Trigger2" parent="." instance=ExtResource("5_4wyds")]
 position = Vector2(647, 30)
 
-[node name="Touchscreen" type="CanvasLayer" parent="."]
-
-[node name="RightTouchScreenButton2" type="TouchScreenButton" parent="Touchscreen"]
-position = Vector2(100, 560)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("6_8rdlh")
-action = "right"
-
-[node name="JumpTouchScreenButton" type="TouchScreenButton" parent="Touchscreen"]
-position = Vector2(990, 560)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("7_k3g72")
-action = "jump"
-
-[node name="LeftTouchScreenButton" type="TouchScreenButton" parent="Touchscreen"]
-position = Vector2(20, 560)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("8_sh7nb")
-action = "left"
-
-[node name="BlowTouchScreenButton2" type="TouchScreenButton" parent="Touchscreen"]
-position = Vector2(1070, 560)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("9_tr68n")
-action = "blow"
+[node name="Touchscreen" parent="." instance=ExtResource("6_vxqgb")]

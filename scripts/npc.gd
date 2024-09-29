@@ -1,6 +1,6 @@
 extends Area2D
 
-enum State {DEFAULT, HIT, EW}
+enum State {DEFAULT, HIT, HEARD, EW}
 
 const BASE_SPEED = 50
 
@@ -9,7 +9,8 @@ const BASE_SPEED = 50
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var timer: Timer = $Timer
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var ew_audio_stream_player_2d: AudioStreamPlayer2D = $EwAudioStreamPlayer2D
+@onready var comment_audio_stream_player_2d: AudioStreamPlayer2D = $CommentAudioStreamPlayer2D
 
 var direction = 1
 var state = State.DEFAULT
@@ -26,14 +27,14 @@ func goToState(s: State):
 		State.DEFAULT:
 			animation_player.play("walk")
 			pass
-		State.HIT:
+		State.HIT, State.HEARD:
 			timer.start()
 			pass
 		State.EW:
 			animation_player.stop()
 			timer.start()
 			sprite_2d.set_frame(2)
-			audio_stream_player_2d.play()
+			ew_audio_stream_player_2d.play()
 			pass
 	
 	state = s
@@ -41,7 +42,7 @@ func goToState(s: State):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	match state:
-		State.DEFAULT, State.HIT:
+		State.DEFAULT, State.HIT, State.HEARD:
 			if !ray_cast_2d_left.is_colliding() && !ray_cast_2d_right.is_colliding():
 				direction = 0
 			match direction:
@@ -62,14 +63,18 @@ func _process(delta: float) -> void:
 			pass
 
 func _on_area_entered(area: Area2D) -> void:
-	pass
 	if state == State.DEFAULT:
 		if area.get_name() == "AttackSnz":
 			goToState(State.HIT)
+		if area.get_name() == "SnzAudible":
+			goToState(State.HEARD)
 
 func _on_timer_timeout() -> void:
 	match state:
 		State.HIT:
 			goToState(State.EW)
 		State.EW:
+			goToState(State.DEFAULT)
+		State.HEARD:
+			comment_audio_stream_player_2d.play()
 			goToState(State.DEFAULT)

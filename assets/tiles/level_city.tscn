@@ -1,54 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://be2nmdoijr3bo"]
+[gd_scene load_steps=7 format=4 uid="uid://be2nmdoijr3bo"]
 
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="1_kubha"]
 [ext_resource type="TileSet" uid="uid://cjqv6jwoi3y7k" path="res://assets/tiles/city_v1.tres" id="2_tfsm8"]
 [ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="3_omqir"]
 [ext_resource type="PackedScene" uid="uid://c3kij1hjuxqd7" path="res://scenes/desctructible_board.tscn" id="4_rvgj0"]
 [ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible_bush.tscn" id="5_i66if"]
-[ext_resource type="Script" path="res://scripts/npc.gd" id="6_ifvks"]
-[ext_resource type="Texture2D" uid="uid://c7lkfo5u4gy0s" path="res://assets/sprites/npc1.png" id="6_w5yaj"]
-[ext_resource type="AudioStream" uid="uid://dokbmjlhkwh3h" path="res://assets/sounds/player/swords/recover/r03.wav" id="8_aj85t"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4tqen"]
-radius = 13.0
-
-[sub_resource type="Animation" id="Animation_mb6sa"]
-resource_name = "walk"
-length = 0.6
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_4afya"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sniu5"]
-_data = {
-"RESET": SubResource("Animation_4afya"),
-"walk": SubResource("Animation_mb6sa")
-}
+[ext_resource type="PackedScene" uid="uid://cfqkstc7om2or" path="res://scenes/npc.tscn" id="6_1dg37"]
 
 [node name="LevelCity" type="Node2D"]
 
@@ -85,42 +42,4 @@ position = Vector2(-430, 1)
 [node name="Destructible3" parent="Trigger2/Destructible" instance=ExtResource("5_i66if")]
 position = Vector2(145, 1)
 
-[node name="NPC" type="Area2D" parent="."]
-position = Vector2(0, 3)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("6_ifvks")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="NPC"]
-z_index = 40
-position = Vector2(-72, -18)
-texture = ExtResource("6_w5yaj")
-hframes = 4
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
-position = Vector2(-71, -17)
-shape = SubResource("CapsuleShape2D_4tqen")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
-libraries = {
-"": SubResource("AnimationLibrary_sniu5")
-}
-
-[node name="RayCast2DRight" type="RayCast2D" parent="NPC"]
-position = Vector2(-71, -17)
-target_position = Vector2(16, 24)
-
-[node name="RayCast2DLeft" type="RayCast2D" parent="NPC"]
-position = Vector2(-71, -17)
-target_position = Vector2(-16, 24)
-
-[node name="Timer" type="Timer" parent="NPC"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="NPC"]
-stream = ExtResource("8_aj85t")
-pitch_scale = 0.79
-
-[connection signal="area_entered" from="NPC" to="NPC" method="_on_area_entered"]
-[connection signal="timeout" from="NPC/Timer" to="NPC" method="_on_timer_timeout"]
+[node name="NPC" parent="." instance=ExtResource("6_1dg37")]
