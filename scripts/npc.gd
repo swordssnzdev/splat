@@ -39,7 +39,6 @@ func setRandomAudios(player: AudioStreamPlayer2D, folder: String, category: Stri
 	for file: String in dir.get_files():
 		if file.ends_with(".wav"):
 			var clip := load(dir.get_current_dir() + "/" + file)
-			print("clip " + folder + " " + category + " " + str(clip) + " " + str(file))
 			rand_stream.add_stream(i, clip)
 			i += 1
 	dir.list_dir_end()
