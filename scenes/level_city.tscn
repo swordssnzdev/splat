@@ -1,11 +1,23 @@
-[gd_scene load_steps=7 format=4 uid="uid://be2nmdoijr3bo"]
+[gd_scene load_steps=11 format=4 uid="uid://be2nmdoijr3bo"]
 
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="1_kubha"]
-[ext_resource type="TileSet" uid="uid://cjqv6jwoi3y7k" path="res://assets/tiles/city_v1.tres" id="2_tfsm8"]
+[ext_resource type="TileSet" uid="uid://djpuqftshi2yx" path="res://assets/tiles/city_v1.tres" id="2_tfsm8"]
 [ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="3_omqir"]
-[ext_resource type="PackedScene" uid="uid://c3kij1hjuxqd7" path="res://scenes/desctructible_board.tscn" id="4_rvgj0"]
-[ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible_bush.tscn" id="5_i66if"]
-[ext_resource type="PackedScene" uid="uid://cfqkstc7om2or" path="res://scenes/npc.tscn" id="6_1dg37"]
+[ext_resource type="Script" path="res://scripts/resources/npc_resource.gd" id="5_duqp1"]
+[ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible.tscn" id="5_i66if"]
+[ext_resource type="PackedScene" uid="uid://go1awbfw1b3b" path="res://scenes/npc.tscn" id="6_1dg37"]
+[ext_resource type="Texture2D" uid="uid://c7lkfo5u4gy0s" path="res://assets/sprites/npc1.png" id="6_4jibs"]
+[ext_resource type="Texture2D" uid="uid://bl3awne241v8x" path="res://assets/sprites/npc2.png" id="8_0oec6"]
+
+[sub_resource type="Resource" id="Resource_nyohy"]
+script = ExtResource("5_duqp1")
+texture = ExtResource("6_4jibs")
+audio_folder = "low"
+
+[sub_resource type="Resource" id="Resource_a2ceb"]
+script = ExtResource("5_duqp1")
+texture = ExtResource("8_0oec6")
+audio_folder = "high"
 
 [node name="LevelCity" type="Node2D"]
 
@@ -30,16 +42,18 @@ position = Vector2(178, -11)
 [node name="Trigger2" parent="." instance=ExtResource("3_omqir")]
 position = Vector2(380, -11)
 
-[node name="Destructible" parent="Trigger2" instance=ExtResource("4_rvgj0")]
-position = Vector2(-92, -13)
-
-[node name="Destructible" parent="Trigger2/Destructible" instance=ExtResource("5_i66if")]
-position = Vector2(-383, 1)
-
-[node name="Destructible2" parent="Trigger2/Destructible" instance=ExtResource("5_i66if")]
-position = Vector2(-430, 1)
-
-[node name="Destructible3" parent="Trigger2/Destructible" instance=ExtResource("5_i66if")]
-position = Vector2(145, 1)
-
 [node name="NPC" parent="." instance=ExtResource("6_1dg37")]
+spec = SubResource("Resource_nyohy")
+
+[node name="Destructible4" parent="." instance=ExtResource("5_i66if")]
+position = Vector2(272, -24)
+
+[node name="Destructible2" parent="." instance=ExtResource("5_i66if")]
+position = Vector2(-256, -24)
+
+[node name="Destructible3" parent="." instance=ExtResource("5_i66if")]
+position = Vector2(-411, -21)
+
+[node name="NPC2" parent="." instance=ExtResource("6_1dg37")]
+position = Vector2(206, 1)
+spec = SubResource("Resource_a2ceb")
