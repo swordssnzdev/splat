@@ -35,27 +35,27 @@ var covered = false
 var vrotation = 0
 
 func _ready() -> void:
-	load_snz_sounds(snz_audio_stream_player_2d, "swords", "snz")
-	load_snz_sounds(covered_snz_audio_stream_player_2d_2, "swords", "snz_covered")
+	#load_snz_sounds(snz_audio_stream_player_2d, "swords", "snz")
+	#load_snz_sounds(covered_snz_audio_stream_player_2d_2, "swords", "snz_covered")
 	animation_player.play("no_snz")
 
-func load_snz_sounds(player: AudioStreamPlayer2D, character: String, category:String):
-	var rand_stream = AudioStreamRandomizer.new()
-	
-	var dir := DirAccess.open("res://assets/sounds/player/" + character + "/" + category)
-	if dir == null: 
-		printerr("Could not open folder")
-		return
-	dir.list_dir_begin()
-	var i = 0
-	for file: String in dir.get_files():
-		if file.ends_with(".wav"):
-			var clip := load(dir.get_current_dir() + "/" + file)
-			print("clip " + character + " " + category + " " + str(clip) + " " + str(file))
-			rand_stream.add_stream(i, clip)
-			i += 1
-	dir.list_dir_end()
-	player.set_stream(rand_stream)
+#func load_snz_sounds(player: AudioStreamPlayer2D, character: String, category:String):
+	#var rand_stream = AudioStreamRandomizer.new()
+	#
+	#var dir := DirAccess.open("res://assets/sounds/player/" + character + "/" + category)
+	#if dir == null: 
+		#printerr("Could not open folder")
+		#return
+	#dir.list_dir_begin()
+	#var i = 0
+	#for file: String in dir.get_files():
+		#if file.ends_with(".wav"):
+			#var clip := load(dir.get_current_dir() + "/" + file)
+			#print("clip " + character + " " + category + " " + str(clip) + " " + str(file))
+			#rand_stream.add_stream(i, clip)
+			#i += 1
+	#dir.list_dir_end()
+	#player.set_stream(rand_stream)
 
 func goToState(s: State) -> void:
 	if state == s && s != State.RESNZ_GROUND:
