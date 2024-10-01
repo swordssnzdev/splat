@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3djr16fwtnr2"]
 
 [ext_resource type="Script" path="res://scripts/trigger.gd" id="1_quk5n"]
-[ext_resource type="Texture2D" uid="uid://dfuiyjxkuf0d3" path="res://assets/sprites/flowers.png" id="2_tmjwk"]
+[ext_resource type="Texture2D" uid="uid://dx638ra4egpyv" path="res://assets/sprites/flowerbox.png" id="2_lohvp"]
 
 [sub_resource type="GDScript" id="GDScript_r5oan"]
 script/source = "extends Sprite2D
@@ -20,6 +20,21 @@ func _process(delta: float) -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_pps5e"]
 radius = 14.0357
 
+[sub_resource type="Animation" id="Animation_qdgbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_ksk17"]
 resource_name = "activate"
 step = 0.1
@@ -36,21 +51,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 0]
 }
 
-[sub_resource type="Animation" id="Animation_qdgbb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bwybl"]
 _data = {
 "RESET": SubResource("Animation_qdgbb"),
@@ -63,9 +63,8 @@ script = ExtResource("1_quk5n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-7, -5)
-texture = ExtResource("2_tmjwk")
-hframes = 2
-vframes = 2
+texture = ExtResource("2_lohvp")
+vframes = 4
 script = SubResource("GDScript_r5oan")
 metadata/_edit_group_ = true
 
