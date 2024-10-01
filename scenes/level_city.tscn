@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://be2nmdoijr3bo"]
+[gd_scene load_steps=13 format=4 uid="uid://be2nmdoijr3bo"]
 
+[ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="1_577py"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="1_kubha"]
 [ext_resource type="TileSet" uid="uid://djpuqftshi2yx" path="res://assets/tiles/city_v1.tres" id="2_tfsm8"]
 [ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="3_omqir"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://go1awbfw1b3b" path="res://scenes/npc.tscn" id="6_1dg37"]
 [ext_resource type="Texture2D" uid="uid://c7lkfo5u4gy0s" path="res://assets/sprites/npc1.png" id="6_4jibs"]
 [ext_resource type="Texture2D" uid="uid://bl3awne241v8x" path="res://assets/sprites/npc2.png" id="8_0oec6"]
+[ext_resource type="Resource" uid="uid://io37a3a0pjqp" path="res://resources/destructible_board.tres" id="9_howey"]
 
 [sub_resource type="Resource" id="Resource_nyohy"]
 script = ExtResource("5_duqp1")
@@ -20,6 +22,8 @@ texture = ExtResource("8_0oec6")
 audio_folder = "high"
 
 [node name="LevelCity" type="Node2D"]
+
+[node name="Touchscreen" parent="." instance=ExtResource("1_577py")]
 
 [node name="Player" parent="." instance=ExtResource("1_kubha")]
 position = Vector2(358, 0)
@@ -47,19 +51,227 @@ position = Vector2(755, -8)
 [node name="Trigger2" parent="." instance=ExtResource("3_omqir")]
 position = Vector2(220, -11)
 
-[node name="NPC" parent="." instance=ExtResource("6_1dg37")]
+[node name="Desctructible" type="Node" parent="."]
+
+[node name="DestructibleLeaves" type="Node" parent="Desctructible"]
+
+[node name="Destructible4" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1, -62)
+
+[node name="Destructible3" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(-2, -81)
+
+[node name="Destructible2" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(12, -101)
+
+[node name="Destructible5" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(27, -82)
+
+[node name="Destructible6" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(24, -57)
+
+[node name="Destructible7" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(50, -71)
+
+[node name="Destructible8" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(36, -105)
+
+[node name="Destructible9" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(52, -87)
+
+[node name="Destructible10" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(123, -83)
+
+[node name="Destructible11" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(145, -74)
+
+[node name="Destructible12" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(171, -66)
+
+[node name="Destructible13" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(166, -91)
+
+[node name="Destructible14" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(144, -97)
+
+[node name="Destructible15" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(150, -118)
+
+[node name="Destructible16" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(173, -114)
+
+[node name="Destructible17" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(192, -94)
+
+[node name="Destructible18" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(807, -81)
+
+[node name="Destructible19" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(823, -98)
+
+[node name="Destructible20" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(848, -103)
+
+[node name="Destructible21" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(829, -81)
+
+[node name="Destructible22" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(828, -55)
+
+[node name="Destructible23" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(851, -68)
+
+[node name="Destructible24" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(855, -87)
+
+[node name="Destructible25" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(862, -97)
+
+[node name="Destructible26" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(881, -69)
+
+[node name="Destructible27" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(946, -90)
+
+[node name="Destructible28" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(954, -115)
+
+[node name="Destructible29" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(971, -98)
+
+[node name="Destructible30" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(981, -118)
+
+[node name="Destructible31" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(981, -118)
+
+[node name="Destructible32" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(997, -95)
+
+[node name="Destructible33" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(961, -77)
+
+[node name="Destructible34" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(990, -76)
+
+[node name="Destructible35" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1067, -83)
+
+[node name="Destructible36" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1077, -112)
+
+[node name="Destructible37" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1101, -124)
+
+[node name="Destructible38" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1131, -116)
+
+[node name="Destructible39" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1137, -93)
+
+[node name="Destructible40" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1124, -66)
+
+[node name="Destructible41" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1106, -80)
+
+[node name="Destructible42" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1112, -101)
+
+[node name="Destructible43" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1089, -97)
+
+[node name="Destructible44" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1198, -83)
+
+[node name="Destructible45" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1201, -104)
+
+[node name="Destructible46" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1243, -119)
+
+[node name="Destructible48" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1261, -100)
+
+[node name="Destructible49" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1250, -67)
+
+[node name="Destructible50" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1224, -67)
+
+[node name="Destructible51" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1222, -92)
+
+[node name="Destructible52" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1242, -90)
+
+[node name="Destructible53" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1338, -57)
+
+[node name="Destructible54" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1330, -80)
+
+[node name="Destructible55" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1369, -98)
+
+[node name="Destructible57" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1390, -70)
+
+[node name="Destructible58" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1370, -54)
+
+[node name="Destructible59" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1371, -77)
+
+[node name="Destructible60" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1355, -76)
+
+[node name="Destructible62" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1643, -136)
+
+[node name="Destructible63" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1681, -135)
+
+[node name="Destructible64" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1662, -125)
+
+[node name="Destructible65" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1644, -113)
+
+[node name="Destructible61" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1623, -117)
+
+[node name="Destructible56" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1343, -100)
+
+[node name="Destructible47" parent="Desctructible/DestructibleLeaves" instance=ExtResource("5_i66if")]
+position = Vector2(1222, -119)
+
+[node name="Destructible" parent="Desctructible" instance=ExtResource("5_i66if")]
+spec = ExtResource("9_howey")
+
+[node name="Destructible2" parent="Desctructible" instance=ExtResource("5_i66if")]
+position = Vector2(824, -17)
+spec = ExtResource("9_howey")
+
+[node name="Destructible3" parent="Desctructible" instance=ExtResource("5_i66if")]
+position = Vector2(1848, -49)
+spec = ExtResource("9_howey")
+
+[node name="Npcs" type="Node" parent="."]
+
+[node name="NPC" parent="Npcs" instance=ExtResource("6_1dg37")]
 position = Vector2(483, 3)
 spec = SubResource("Resource_nyohy")
 
-[node name="Destructible4" parent="." instance=ExtResource("5_i66if")]
-position = Vector2(293, -24)
+[node name="NPC4" parent="Npcs" instance=ExtResource("6_1dg37")]
+position = Vector2(1995, -28)
+spec = SubResource("Resource_nyohy")
 
-[node name="Destructible2" parent="." instance=ExtResource("5_i66if")]
-position = Vector2(1048, -23)
-
-[node name="Destructible3" parent="." instance=ExtResource("5_i66if")]
-position = Vector2(926, -21)
-
-[node name="NPC2" parent="." instance=ExtResource("6_1dg37")]
+[node name="NPC2" parent="Npcs" instance=ExtResource("6_1dg37")]
 position = Vector2(712, 1)
+spec = SubResource("Resource_a2ceb")
+
+[node name="NPC3" parent="Npcs" instance=ExtResource("6_1dg37")]
+position = Vector2(1376, 2)
 spec = SubResource("Resource_a2ceb")
