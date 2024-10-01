@@ -216,7 +216,7 @@ func die():
 	get_tree().reload_current_scene()
 
 func walk(direction):
-	print(position)
+	# print(position)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = BASE_JUMP_VELOCITY
 
