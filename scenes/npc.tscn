@@ -95,13 +95,21 @@ libraries = {
 "": SubResource("AnimationLibrary_sniu5")
 }
 
-[node name="RayCast2DRight" type="RayCast2D" parent="."]
+[node name="RayCast2DRightFloor" type="RayCast2D" parent="."]
 position = Vector2(-71, -17)
 target_position = Vector2(16, 24)
 
-[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+[node name="RayCast2DLeftFloor" type="RayCast2D" parent="."]
 position = Vector2(-71, -17)
 target_position = Vector2(-16, 24)
+
+[node name="RayCast2DRightWall" type="RayCast2D" parent="."]
+position = Vector2(-71, -17)
+target_position = Vector2(21, 8)
+
+[node name="RayCast2DLeftWall" type="RayCast2D" parent="."]
+position = Vector2(-71, -17)
+target_position = Vector2(-21, 8)
 
 [node name="Timer" type="Timer" parent="."]
 

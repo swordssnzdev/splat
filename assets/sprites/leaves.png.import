@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ngibyb4qrld"
-path="res://.godot/imported/sandwichboard.png-ee7e9fae905ae75485ea0826891afa8c.ctex"
+uid="uid://bywiboovsx8c1"
+path="res://.godot/imported/leaves.png-d00ccddd4d28e51aa7a2720415d473d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sandwichboard.png"
-dest_files=["res://.godot/imported/sandwichboard.png-ee7e9fae905ae75485ea0826891afa8c.ctex"]
+source_file="res://assets/sprites/leaves.png"
+dest_files=["res://.godot/imported/leaves.png-d00ccddd4d28e51aa7a2720415d473d7.ctex"]
 
 [params]
 

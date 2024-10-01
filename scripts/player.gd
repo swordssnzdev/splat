@@ -4,10 +4,10 @@ extends CharacterBody2D
 enum State {NO_SNZ, DEFAULT, BUILDUP, SNZ_GROUND, RESNZ_GROUND, SNZ_JUMP, RECOVER, BLOW}
 
 const BASE_SPEED = 150.0
-const BASE_JUMP_VELOCITY = -300.0
+const BASE_JUMP_VELOCITY = -200.0
 const BASE_BUILDUP_LENGTH = 100
 const BASE_SNZ_INTERVAL = 250
-const SNZ_JUMP_VELOCITY = -500.0
+const SNZ_JUMP_VELOCITY = -450.0
 const RESNZ_RATE_ONE_IN_N = 2;
 
 signal trigger
@@ -216,6 +216,7 @@ func die():
 	get_tree().reload_current_scene()
 
 func walk(direction):
+	# print(position)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = BASE_JUMP_VELOCITY
 

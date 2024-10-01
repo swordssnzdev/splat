@@ -6,8 +6,11 @@ enum State {DEFAULT, HIT, HEARD, EW}
 
 const BASE_SPEED = 50
 
-@onready var ray_cast_2d_right: RayCast2D = $RayCast2DRight
-@onready var ray_cast_2d_left: RayCast2D = $RayCast2DLeft
+@onready var ray_cast_2d_right_floor: RayCast2D = $RayCast2DRightFloor
+@onready var ray_cast_2d_left_floor: RayCast2D = $RayCast2DLeftFloor
+@onready var ray_cast_2d_right_wall: RayCast2D = $RayCast2DRightWall
+@onready var ray_cast_2d_left_wall: RayCast2D = $RayCast2DLeftWall
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var timer: Timer = $Timer
@@ -66,17 +69,16 @@ func goToState(s: State):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# print(str(state) + " " + str(ray_cast_2d_left_floor.is_colliding()) + " " + str(ray_cast_2d_right_floor.is_colliding()) + " " + str(ray_cast_2d_left_wall.is_colliding()) + " " +str(ray_cast_2d_right_wall.is_colliding()) + "")
 	match state:
 		State.DEFAULT, State.HIT, State.HEARD:
-			if !ray_cast_2d_left.is_colliding() && !ray_cast_2d_right.is_colliding():
+			if (!ray_cast_2d_left_floor.is_colliding() && !ray_cast_2d_right_floor.is_colliding()) || (ray_cast_2d_left_wall.is_colliding() && ray_cast_2d_right_wall.is_colliding()):
 				direction = 0
-			match direction:
-				1:
-					if !ray_cast_2d_right.is_colliding():
-						direction = -1
-				-1:
-					if !ray_cast_2d_left.is_colliding():
-						direction = 1
+			else:
+				if !ray_cast_2d_right_floor.is_colliding() || ray_cast_2d_right_wall.is_colliding():
+					direction = -1
+				if !ray_cast_2d_left_floor.is_colliding() || ray_cast_2d_left_wall.is_colliding():
+					direction = 1
 			
 			if direction:
 				animation_player.play("walk")

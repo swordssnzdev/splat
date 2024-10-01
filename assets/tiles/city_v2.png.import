@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ngibyb4qrld"
-path="res://.godot/imported/sandwichboard.png-ee7e9fae905ae75485ea0826891afa8c.ctex"
+uid="uid://bucjwcor5rh71"
+path="res://.godot/imported/city_v2.png-ee5ff074da615ddc928505f9d31a058d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sandwichboard.png"
-dest_files=["res://.godot/imported/sandwichboard.png-ee7e9fae905ae75485ea0826891afa8c.ctex"]
+source_file="res://assets/tiles/city_v2.png"
+dest_files=["res://.godot/imported/city_v2.png-ee5ff074da615ddc928505f9d31a058d.ctex"]
 
 [params]
 
