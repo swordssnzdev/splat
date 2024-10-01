@@ -276,7 +276,7 @@ spec = SubResource("Resource_a2ceb")
 position = Vector2(758, -11)
 
 [node name="Trigger6" parent="Triggers" instance=ExtResource("3_omqir")]
-position = Vector2(498, -12)
+position = Vector2(500, -11)
 
 [node name="Trigger7" parent="Triggers" instance=ExtResource("3_omqir")]
 position = Vector2(275, -11)
