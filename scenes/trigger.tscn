@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3djr16fwtnr2"]
 
-[ext_resource type="Script" path="res://scenes/trigger.gd" id="1_quk5n"]
+[ext_resource type="Script" path="res://scripts/trigger.gd" id="1_quk5n"]
 [ext_resource type="Texture2D" uid="uid://dfuiyjxkuf0d3" path="res://assets/sprites/flowers.png" id="2_tmjwk"]
 
 [sub_resource type="GDScript" id="GDScript_r5oan"]

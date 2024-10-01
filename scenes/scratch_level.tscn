@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://xd7254rcrtip" path="res://assets/tiles/scratch.png" id="1_rwogo"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_1yd7u"]
+[ext_resource type="Resource" uid="uid://io37a3a0pjqp" path="res://resources/destructible_board.tres" id="4_1qbkx"]
 [ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="5_4wyds"]
-[ext_resource type="PackedScene" uid="uid://ddbw3shgvuvaq" path="res://scenes/touchscreen.tscn" id="6_vxqgb"]
-[ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible_bush.tscn" id="6_wt135"]
-[ext_resource type="PackedScene" uid="uid://c3kij1hjuxqd7" path="res://scenes/desctructible_board.tscn" id="26_04dqb"]
+[ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="6_vxqgb"]
+[ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible.tscn" id="6_wt135"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1unv"]
 texture = ExtResource("1_rwogo")
@@ -33,47 +33,44 @@ metadata/_edit_group_ = true
 
 [node name="Destructible" type="Node" parent="."]
 
-[node name="Bush" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(173, -76)
+[node name="Destructible" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(63, -13)
 
-[node name="Bush2" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(64, -12)
+[node name="Destructible2" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(8, -11)
 
-[node name="Bush3" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(26, -12)
+[node name="Destructible3" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(183, -78)
 
-[node name="Bush4" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(-34, -13)
+[node name="Destructible4" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(530, -47)
 
-[node name="Bush7" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(558, -46)
+[node name="Destructible5" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(857, 19)
 
-[node name="Bush8" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(690, 18)
+[node name="Destructible6" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(753, 22)
 
-[node name="Bush9" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(793, 18)
+[node name="Destructible7" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(843, -143)
 
-[node name="Bush10" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(1284, -14)
+[node name="Destructible8" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(1314, -11)
 
-[node name="Bush11" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(1531, -78)
+[node name="Destructible9" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(1656, -301)
 
-[node name="Bush12" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(1710, -301)
+[node name="Destructible10" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(1346, -237)
+spec = ExtResource("4_1qbkx")
 
-[node name="Bush13" parent="Destructible" instance=ExtResource("6_wt135")]
-position = Vector2(1387, -238)
+[node name="Destructible11" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(1007, -270)
+spec = ExtResource("4_1qbkx")
 
-[node name="Board" parent="Destructible" instance=ExtResource("26_04dqb")]
-position = Vector2(401, -206)
-
-[node name="Board2" parent="Destructible" instance=ExtResource("26_04dqb")]
-position = Vector2(878, 20)
-
-[node name="Board3" parent="Destructible" instance=ExtResource("26_04dqb")]
-position = Vector2(1003, -269)
+[node name="Destructible12" parent="Destructible" instance=ExtResource("6_wt135")]
+position = Vector2(409, -204)
+spec = ExtResource("4_1qbkx")
 
 [node name="Trigger" parent="." instance=ExtResource("5_4wyds")]
 

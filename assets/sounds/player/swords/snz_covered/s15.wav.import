@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b0bdsjpfe5w3e"
-path="res://.godot/imported/s15.wav-66ca93e0c4761f03cab73d137ab6fba7.sample"
+path="res://.godot/imported/s15.wav-908a5f929e44a81d29783abf6373e0e9.sample"
 
 [deps]
 
-source_file="res://assets/sounds/player/swords/snz/s15.wav"
-dest_files=["res://.godot/imported/s15.wav-66ca93e0c4761f03cab73d137ab6fba7.sample"]
+source_file="res://assets/sounds/player/swords/snz_covered/s15.wav"
+dest_files=["res://.godot/imported/s15.wav-908a5f929e44a81d29783abf6373e0e9.sample"]
 
 [params]
 

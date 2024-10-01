@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var spec: NpcResource
+
 enum State {DEFAULT, HIT, HEARD, EW}
 
 const BASE_SPEED = 50
@@ -17,7 +19,30 @@ var state = State.DEFAULT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	sprite_2d.set_texture(spec.texture)
+	setRandomAudios(ew_audio_stream_player_2d, spec.audio_folder, "ew")
+	setRandomAudios(comment_audio_stream_player_2d, spec.audio_folder, "comment")
+
+func setRandomAudios(player: AudioStreamPlayer2D, folder: String, category: String):
+	if folder == null || folder == "" || category == null || category == "":
+		return
+	var rand_stream = AudioStreamRandomizer.new()
+	player.set_volume_db(15)
+	player.set_pitch_scale(1)
+	
+	var dir := DirAccess.open("res://assets/sounds/npc/" + folder + "/" + category)
+	if dir == null: 
+		printerr("Could not open folder")
+		return
+	dir.list_dir_begin()
+	var i = 0
+	for file: String in dir.get_files():
+		if file.ends_with(".wav"):
+			var clip := load(dir.get_current_dir() + "/" + file)
+			rand_stream.add_stream(i, clip)
+			i += 1
+	dir.list_dir_end()
+	player.set_stream(rand_stream)
 
 func goToState(s: State):
 	if s == state:

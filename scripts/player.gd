@@ -17,6 +17,7 @@ signal trigger
 @onready var attacksnz_animation_player: AnimationPlayer = $AttackSnz/AnimationPlayer
 @onready var attacksnz_sprite_2d: Sprite2D = $AttackSnz/Sprite2D
 @onready var snz_audio_stream_player_2d: AudioStreamPlayer2D = $SnzAudioStreamPlayer2D
+@onready var covered_snz_audio_stream_player_2d_2: AudioStreamPlayer2D = $CoveredSnzAudioStreamPlayer2D2
 @onready var blow_audio_stream_player_2d: AudioStreamPlayer2D = $BlowAudioStreamPlayer2D
 @onready var buildup_audio_stream_player_2d: AudioStreamPlayer2D = $BuildupAudioStreamPlayer2D
 @onready var recover_audio_stream_player_2d: AudioStreamPlayer2D = $RecoverAudioStreamPlayer2D
@@ -30,10 +31,31 @@ var buildupProgress = BASE_BUILDUP_LENGTH
 var nextSnzProgress = BASE_SNZ_INTERVAL
 # Enough snz time has elapsed for the jump to start
 var canJump
+var covered = false
 var vrotation = 0
 
 func _ready() -> void:
+	#load_snz_sounds(snz_audio_stream_player_2d, "swords", "snz")
+	#load_snz_sounds(covered_snz_audio_stream_player_2d_2, "swords", "snz_covered")
 	animation_player.play("no_snz")
+
+#func load_snz_sounds(player: AudioStreamPlayer2D, character: String, category:String):
+	#var rand_stream = AudioStreamRandomizer.new()
+	#
+	#var dir := DirAccess.open("res://assets/sounds/player/" + character + "/" + category)
+	#if dir == null: 
+		#printerr("Could not open folder")
+		#return
+	#dir.list_dir_begin()
+	#var i = 0
+	#for file: String in dir.get_files():
+		#if file.ends_with(".wav"):
+			#var clip := load(dir.get_current_dir() + "/" + file)
+			#print("clip " + character + " " + category + " " + str(clip) + " " + str(file))
+			#rand_stream.add_stream(i, clip)
+			#i += 1
+	#dir.list_dir_end()
+	#player.set_stream(rand_stream)
 
 func goToState(s: State) -> void:
 	if state == s && s != State.RESNZ_GROUND:
@@ -41,8 +63,10 @@ func goToState(s: State) -> void:
 		
 	match s:
 		State.NO_SNZ:
+			covered = false
 			animation_player.play("no_snz")
 		State.DEFAULT:
+			covered = false
 			if state == State.RECOVER && !snz_audio_stream_player_2d.is_playing():
 				recover_audio_stream_player_2d.play()
 			nextSnzProgress = 0 if state == State.NO_SNZ else BASE_SNZ_INTERVAL
@@ -54,18 +78,25 @@ func goToState(s: State) -> void:
 			pass
 		State.SNZ_GROUND:
 			velocity.x = 0
-			# I wanted particles but they don't work on my computer
-			attacksnz_animation_player.play("spray")
-			animation_player.play("snz")
-			snz_audio_stream_player_2d.play()
-			snz_jump_timer.start()
+			if covered:
+				covered_snz_audio_stream_player_2d_2.play()
+				animation_player.play("snz_covered")
+			else:
+				# I wanted particles but they don't work on my computer
+				attacksnz_animation_player.play("spray")
+				animation_player.play("snz")
+				snz_audio_stream_player_2d.play()
+				snz_jump_timer.start()
 		State.RESNZ_GROUND:
 			sprite_2d.flip_h = !sprite_2d.flip_h
-			attacksnz_animation_player.stop()
-			# I wanted particles but they don't work on my computer
-			attacksnz_animation_player.play("spray")
-			animation_player.play("resnz")
-			snz_audio_stream_player_2d.play()
+			if covered:
+				covered_snz_audio_stream_player_2d_2.play()
+				animation_player.play("resnz_covered")
+			else:
+				# I wanted particles but they don't work on my computer
+				attacksnz_animation_player.play("spray")
+				animation_player.play("resnz")
+				snz_audio_stream_player_2d.play()
 		State.SNZ_JUMP:
 			# Start spinning
 			vrotation = 1
@@ -74,8 +105,10 @@ func goToState(s: State) -> void:
 			velocity = Vector2.ZERO
 			vrotation = 0
 			sprite_2d.set_rotation(0)
-			animation_player.play("recover")
-			pass
+			if covered:
+				animation_player.play("recover_covered")
+			else:
+				animation_player.play("recover")
 		State.BLOW:
 			velocity = Vector2.ZERO
 			animation_player.play("blow")
@@ -103,6 +136,10 @@ func _physics_process(delta: float) -> void:
 			if nextSnzProgress <= 0 || Input.is_action_just_pressed("debug_snz"):
 				goToState(State.BUILDUP)
 		State.BUILDUP:
+			if !covered && Input.is_action_pressed("blow"):
+				covered = true
+				animation_player.play("buildup_covered")
+			
 			# Speed up animation as buildup progresses
 			animation_player.speed_scale = 1 + 8 * (BASE_BUILDUP_LENGTH - buildupProgress) / BASE_BUILDUP_LENGTH
 			if direction:
@@ -126,7 +163,7 @@ func _physics_process(delta: float) -> void:
 				animation_player.speed_scale = 1 # Reset
 				goToState(State.SNZ_GROUND)
 		State.SNZ_GROUND:
-			if Input.is_action_pressed("jump") && is_on_floor() && snz_jump_timer.is_stopped():
+			if !covered && Input.is_action_pressed("jump") && is_on_floor() && snz_jump_timer.is_stopped():
 				velocity.y = SNZ_JUMP_VELOCITY
 				velocity.x = direction * BASE_SPEED
 				goToState(State.SNZ_JUMP)
@@ -161,11 +198,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
-		"snz":
+		"snz", "resnz", "snz_covered", "resnz_covered":
 			end_snz()
-		"resnz":
-			end_snz()
-		"recover":
+		"recover", "recover_covered":
 			goToState(State.DEFAULT)
 		"blow":
 			goToState(State.NO_SNZ)

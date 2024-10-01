@@ -1,18 +1,18 @@
-[gd_scene load_steps=62 format=3 uid="uid://tmvbbkdw2g81"]
+[gd_scene load_steps=67 format=3 uid="uid://tmvbbkdw2g81"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_apf0w"]
-[ext_resource type="Texture2D" uid="uid://bntvf6marp5ky" path="res://assets/sprites/player_swords_v2.png" id="2_4e0dg"]
-[ext_resource type="AudioStream" uid="uid://duqeb1ussu4py" path="res://assets/sounds/player/swords/snz/s01.wav" id="3_ii45o"]
+[ext_resource type="Texture2D" uid="uid://dljfa6ruet88d" path="res://assets/sprites/player_swords_v3.png" id="2_vyhwu"]
+[ext_resource type="AudioStream" uid="uid://duqeb1ussu4py" path="res://assets/sounds/player/swords/snz_covered/s01.wav" id="3_ii45o"]
 [ext_resource type="AudioStream" uid="uid://bndrdsfbexyxk" path="res://assets/sounds/player/swords/trigger/t01.wav" id="3_k1ym3"]
 [ext_resource type="AudioStream" uid="uid://cnvjkhergv0ch" path="res://assets/sounds/player/swords/trigger/t02.wav" id="4_a44ee"]
-[ext_resource type="AudioStream" uid="uid://5fg3v0nmouu2" path="res://assets/sounds/player/swords/snz/s02.wav" id="4_lh681"]
+[ext_resource type="AudioStream" uid="uid://5fg3v0nmouu2" path="res://assets/sounds/player/swords/snz_covered/s02.wav" id="4_lh681"]
 [ext_resource type="AudioStream" uid="uid://bei107r00wyjb" path="res://assets/sounds/player/swords/snz/s11.wav" id="5_lfy2h"]
 [ext_resource type="AudioStream" uid="uid://b0ob3eoul2gc6" path="res://assets/sounds/player/swords/trigger/t03.wav" id="5_tvr0e"]
 [ext_resource type="AudioStream" uid="uid://bvkp1xmsqfp5b" path="res://assets/sounds/player/swords/trigger/t04.wav" id="6_fc1sv"]
 [ext_resource type="AudioStream" uid="uid://dipt1wsqy2mn" path="res://assets/sounds/player/swords/snz/s12.wav" id="6_ynad4"]
 [ext_resource type="AudioStream" uid="uid://cb8v6vj26fmp7" path="res://assets/sounds/player/swords/snz/s13.wav" id="7_mlvpf"]
 [ext_resource type="AudioStream" uid="uid://44budcex17yi" path="res://assets/sounds/player/swords/snz/s14.wav" id="8_x8flc"]
-[ext_resource type="AudioStream" uid="uid://b0bdsjpfe5w3e" path="res://assets/sounds/player/swords/snz/s15.wav" id="9_022o7"]
+[ext_resource type="AudioStream" uid="uid://b0bdsjpfe5w3e" path="res://assets/sounds/player/swords/snz_covered/s15.wav" id="9_022o7"]
 [ext_resource type="AudioStream" uid="uid://dcf801u56fq3p" path="res://assets/sounds/player/swords/snz/s16.wav" id="10_cyt5v"]
 [ext_resource type="AudioStream" uid="uid://5hh0tveiek27" path="res://assets/sounds/player/swords/snz/s03.wav" id="11_epidp"]
 [ext_resource type="AudioStream" uid="uid://craob2n6kklqx" path="res://assets/sounds/player/swords/snz/s17.wav" id="11_n6mcg"]
@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://dprjdnwukfvqq" path="res://assets/sounds/player/swords/snz/s06.wav" id="14_k8ela"]
 [ext_resource type="AudioStream" uid="uid://d2011xo6okok1" path="res://assets/sounds/player/swords/snz/s07.wav" id="15_40frg"]
 [ext_resource type="AudioStream" uid="uid://cwrp1p83ng0td" path="res://assets/sounds/player/swords/snz/s08.wav" id="16_0obtt"]
-[ext_resource type="AudioStream" uid="uid://kqn3pt1dx5mr" path="res://assets/sounds/player/swords/snz/s09.wav" id="17_80hwk"]
+[ext_resource type="AudioStream" uid="uid://kqn3pt1dx5mr" path="res://assets/sounds/player/swords/snz_covered/s09.wav" id="17_80hwk"]
 [ext_resource type="AudioStream" uid="uid://dp2s5hjn3oxqt" path="res://assets/sounds/player/swords/snz/s10.wav" id="18_n1dlj"]
 [ext_resource type="AudioStream" uid="uid://b5pfwfcp24wfo" path="res://assets/sounds/player/swords/blow/b01.wav" id="19_3ixuv"]
 [ext_resource type="AudioStream" uid="uid://miehlkdokr8y" path="res://assets/sounds/player/swords/buildup/u01.wav" id="20_lw1rh"]
@@ -178,16 +178,85 @@ tracks/0/keys = {
 "values": [6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_lq8xn"]
+resource_name = "snz_covered"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_ohbit"]
+resource_name = "buildup_covered"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_4douj"]
+resource_name = "resnz_covered"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_dtvu2"]
+resource_name = "recover_covered"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 16, 17, 16, 17, 16, 17]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7kojh"]
 _data = {
 "RESET": SubResource("Animation_ntlw8"),
 "blow": SubResource("Animation_rjav0"),
 "buildup": SubResource("Animation_h28q1"),
+"buildup_covered": SubResource("Animation_ohbit"),
 "default": SubResource("Animation_bskg4"),
 "no_snz": SubResource("Animation_34r21"),
 "recover": SubResource("Animation_5gjw7"),
+"recover_covered": SubResource("Animation_dtvu2"),
 "resnz": SubResource("Animation_e85ns"),
-"snz": SubResource("Animation_a10tn")
+"resnz_covered": SubResource("Animation_4douj"),
+"snz": SubResource("Animation_a10tn"),
+"snz_covered": SubResource("Animation_lq8xn")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ehl6k"]
@@ -198,25 +267,28 @@ stream_2/stream = ExtResource("5_tvr0e")
 stream_3/stream = ExtResource("6_fc1sv")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_enevt"]
-streams_count = 18
+streams_count = 14
+stream_0/stream = ExtResource("11_epidp")
+stream_1/stream = ExtResource("12_ye76j")
+stream_2/stream = ExtResource("13_4l67w")
+stream_3/stream = ExtResource("14_k8ela")
+stream_4/stream = ExtResource("15_40frg")
+stream_5/stream = ExtResource("16_0obtt")
+stream_6/stream = ExtResource("18_n1dlj")
+stream_7/stream = ExtResource("5_lfy2h")
+stream_8/stream = ExtResource("6_ynad4")
+stream_9/stream = ExtResource("7_mlvpf")
+stream_10/stream = ExtResource("8_x8flc")
+stream_11/stream = ExtResource("10_cyt5v")
+stream_12/stream = ExtResource("11_n6mcg")
+stream_13/stream = ExtResource("12_xa70t")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bi8by"]
+streams_count = 4
 stream_0/stream = ExtResource("3_ii45o")
 stream_1/stream = ExtResource("4_lh681")
-stream_2/stream = ExtResource("11_epidp")
-stream_3/stream = ExtResource("12_ye76j")
-stream_4/stream = ExtResource("13_4l67w")
-stream_5/stream = ExtResource("14_k8ela")
-stream_6/stream = ExtResource("15_40frg")
-stream_7/stream = ExtResource("16_0obtt")
-stream_8/stream = ExtResource("17_80hwk")
-stream_9/stream = ExtResource("18_n1dlj")
-stream_10/stream = ExtResource("5_lfy2h")
-stream_11/stream = ExtResource("6_ynad4")
-stream_12/stream = ExtResource("7_mlvpf")
-stream_13/stream = ExtResource("8_x8flc")
-stream_14/stream = ExtResource("9_022o7")
-stream_15/stream = ExtResource("10_cyt5v")
-stream_16/stream = ExtResource("11_n6mcg")
-stream_17/stream = ExtResource("12_xa70t")
+stream_2/stream = ExtResource("17_80hwk")
+stream_3/stream = ExtResource("9_022o7")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvufg"]
 streams_count = 5
@@ -373,9 +445,9 @@ position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -26)
-texture = ExtResource("2_4e0dg")
-hframes = 3
-vframes = 4
+texture = ExtResource("2_vyhwu")
+hframes = 4
+vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -388,6 +460,9 @@ volume_db = 12.739
 
 [node name="SnzAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_enevt")
+
+[node name="CoveredSnzAudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_bi8by")
 
 [node name="BlowAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_3ixuv")
