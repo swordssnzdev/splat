@@ -1,15 +1,12 @@
 extends Area2D
 
+class_name Npc
+
 @export var spec: NpcResource
 
 enum State {DEFAULT, HIT, HEARD, EW}
 
-const BASE_SPEED = 50
-
-@onready var ray_cast_2d_right_floor: RayCast2D = $RayCast2DRightFloor
-@onready var ray_cast_2d_left_floor: RayCast2D = $RayCast2DLeftFloor
-@onready var ray_cast_2d_right_wall: RayCast2D = $RayCast2DRightWall
-@onready var ray_cast_2d_left_wall: RayCast2D = $RayCast2DLeftWall
+@onready var wanderer: Wanderer = $Wanderer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -72,20 +69,7 @@ func _process(delta: float) -> void:
 	# print(str(state) + " " + str(ray_cast_2d_left_floor.is_colliding()) + " " + str(ray_cast_2d_right_floor.is_colliding()) + " " + str(ray_cast_2d_left_wall.is_colliding()) + " " +str(ray_cast_2d_right_wall.is_colliding()) + "")
 	match state:
 		State.DEFAULT, State.HIT, State.HEARD:
-			if (!ray_cast_2d_left_floor.is_colliding() && !ray_cast_2d_right_floor.is_colliding()) || (ray_cast_2d_left_wall.is_colliding() && ray_cast_2d_right_wall.is_colliding()):
-				direction = 0
-			else:
-				if !ray_cast_2d_right_floor.is_colliding() || ray_cast_2d_right_wall.is_colliding():
-					direction = -1
-				if !ray_cast_2d_left_floor.is_colliding() || ray_cast_2d_left_wall.is_colliding():
-					direction = 1
-			
-			if direction:
-				animation_player.play("walk")
-				position.x += delta * BASE_SPEED * direction
-				sprite_2d.flip_h = direction < 0
-			elif sprite_2d.get_frame() == 0:
-				animation_player.pause()
+			position.x += wanderer.wander(delta)
 		State.EW:
 			pass
 

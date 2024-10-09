@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdd2dgck7opf5"]
+
+[ext_resource type="Texture2D" uid="uid://dx638ra4egpyv" path="res://assets/sprites/flowerbox.png" id="1_inne6"]
+[ext_resource type="Script" path="res://scripts/static_trigger.gd" id="1_rpo0a"]
+[ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="2_5dpwj"]
+
+[sub_resource type="Animation" id="Animation_qdgbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ksk17"]
+resource_name = "activate"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwybl"]
+_data = {
+"RESET": SubResource("Animation_qdgbb"),
+"activate": SubResource("Animation_ksk17")
+}
+
+[node name="StaticTrigger" type="Node2D"]
+script = ExtResource("1_rpo0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -16)
+texture = ExtResource("1_inne6")
+vframes = 4
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwybl")
+}
+
+[node name="Trigger" parent="." instance=ExtResource("2_5dpwj")]

@@ -428,6 +428,8 @@ radius = 104.12
 [node name="Player" type="CharacterBody2D"]
 z_index = 50
 z_as_relative = false
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_apf0w")
 
 [node name="SnzJumpTimer" type="Timer" parent="."]
@@ -474,8 +476,8 @@ stream = SubResource("AudioStreamRandomizer_gvufg")
 stream = SubResource("AudioStreamRandomizer_8rm8p")
 
 [node name="AttackSnz" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSnz"]
 position = Vector2(0.5, -22)
@@ -495,8 +497,8 @@ libraries = {
 }
 
 [node name="SnzAudible" type="Area2D" parent="AttackSnz"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackSnz/SnzAudible"]
 position = Vector2(2, -28)
