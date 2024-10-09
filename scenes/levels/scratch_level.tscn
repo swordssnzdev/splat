@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=4 uid="uid://clq1dhuuohgjo"]
 
-[ext_resource type="Texture2D" uid="uid://xd7254rcrtip" path="res://assets/tiles/scratch.png" id="1_rwogo"]
-[ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_1yd7u"]
-[ext_resource type="Resource" uid="uid://io37a3a0pjqp" path="res://resources/destructible_board.tres" id="4_1qbkx"]
-[ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="5_4wyds"]
-[ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="6_vxqgb"]
-[ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible.tscn" id="6_wt135"]
+[ext_resource type="Texture2D" uid="uid://xd7254rcrtip" path="res://assets/tiles/scratch.png" id="1_1h1oc"]
+[ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_fvbjx"]
+[ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible.tscn" id="3_njj81"]
+[ext_resource type="Resource" uid="uid://io37a3a0pjqp" path="res://resources/destructible_board.tres" id="4_6p3kh"]
+[ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="5_s2c0e"]
+[ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="6_f5u4d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1unv"]
-texture = ExtResource("1_rwogo")
+texture = ExtResource("1_1h1oc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -27,54 +27,54 @@ position = Vector2(-90, 9)
 tile_map_data = PackedByteArray("AAD7/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAP//AAAAAAAAAAAHAP7/AAAAAAAAAAAIAP7/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAP//AAAAAAAAAAAOAP7/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAPz/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPr/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAP//AAAAAAAAAAAPAP7/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAAAAAAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAUAAAAAAAAAAAAAAATAAAAAAAAAAAAAAASAAAAAAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAASAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAAVAAEAAAAAAAAAAAAGAP//AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAANAP3/AAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAAWAAEAAAAAAAAAAAAXAAEAAAAAAAAAAAAYAAEAAAAAAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAAAAAAAAAAbAAEAAAAAAAAAAAAcAAEAAAAAAAAAAAAdAAEAAAAAAAAAAAAeAAEAAAAAAAAAAAAfAAEAAAAAAAAAAAAgAAEAAAAAAAAAAAAhAAEAAAAAAAAAAAAdAPz/AAAAAAAAAAAcAPz/AAAAAAAAAAAhAPj/AAAAAAAAAAAgAPj/AAAAAAAAAAAiAPj/AAAAAAAAAAAjAPj/AAAAAAAAAAAgAAIAAAAAAAAAAAAfAAIAAAAAAAAAAAAeAAIAAAAAAAAAAAAdAAIAAAAAAAAAAAAcAAIAAAAAAAAAAAAbAAIAAAAAAAAAAAAaAAIAAAAAAAAAAAAZAAIAAAAAAAAAAAAYAAIAAAAAAAAAAAAXAAIAAAAAAAAAAAAWAAIAAAAAAAAAAAAVAAIAAAAAAAAAAAAUAAIAAAAAAAAAAAATAAIAAAAAAAAAAAASAAIAAAAAAAAAAAAgAAMAAAAAAAAAAAAfAAMAAAAAAAAAAAAeAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAhAAMAAAAAAAAAAAAhAAIAAAAAAAAAAAAiAAIAAAAAAAAAAAAiAAMAAAAAAAAAAAAjAAMAAAAAAAAAAAAkAAMAAAAAAAAAAAAlAAMAAAAAAAAAAAAmAAIAAAAAAAAAAAAnAAIAAAAAAAAAAAAmAAEAAAAAAAAAAAAlAAEAAAAAAAAAAAAlAAIAAAAAAAAAAAAkAAIAAAAAAAAAAAAjAAIAAAAAAAAAAAAnAAEAAAAAAAAAAAAoAAEAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAAAAAAuAP//AAAAAAAAAAAvAP//AAAAAAAAAAAwAP//AAAAAAAAAAAwAAAAAAAAAAAAAAAvAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAArAAEAAAAAAAAAAAAqAAEAAAAAAAAAAAApAAEAAAAAAAAAAAAmAAMAAAAAAAAAAAAnAAMAAAAAAAAAAAAoAAIAAAAAAAAAAAApAAIAAAAAAAAAAAAqAAIAAAAAAAAAAAAsAAEAAAAAAAAAAAAtAAEAAAAAAAAAAAAuAAEAAAAAAAAAAAAvAAEAAAAAAAAAAAAwAAEAAAAAAAAAAAAxAAEAAAAAAAAAAAAxAAAAAAAAAAAAAAAxAP//AAAAAAAAAAAyAP7/AAAAAAAAAAAzAP7/AAAAAAAAAAA0AP7/AAAAAAAAAAA1AP7/AAAAAAAAAAA2AP7/AAAAAAAAAAA2AP//AAAAAAAAAAA1AP//AAAAAAAAAAA0AP//AAAAAAAAAAAzAP//AAAAAAAAAAAyAP//AAAAAAAAAAAyAAAAAAAAAAAAAAAzAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA1AAAAAAAAAAAAAAA2AAAAAAAAAAAAAAArAPn/AAAAAAAAAAAsAPn/AAAAAAAAAAAtAPn/AAAAAAAAAAAuAPn/AAAAAAAAAAAvAPn/AAAAAAAAAAA3AAAAAAAAAAAAAAA3AP//AAAAAAAAAAA3AP7/AAAAAAAAAAA3AP3/AAAAAAAAAAA3APz/AAAAAAAAAAA2APv/AAAAAAAAAAA2APr/AAAAAAAAAAA2APn/AAAAAAAAAAA2APj/AAAAAAAAAAA3APj/AAAAAAAAAAA3APf/AAAAAAAAAAA3APn/AAAAAAAAAAA2APz/AAAAAAAAAAA2AP3/AAAAAAAAAAA3APv/AAAAAAAAAAA3APr/AAAAAAAAAAA2APf/AAAAAAAAAAA4APf/AAAAAAAAAAA5APf/AAAAAAAAAAA4APj/AAAAAAAAAAA4APn/AAAAAAAAAAA4APr/AAAAAAAAAAA4APv/AAAAAAAAAAA4APz/AAAAAAAAAAA4AP3/AAAAAAAAAAA4AP7/AAAAAAAAAAA4AP//AAAAAAAAAAA4AAAAAAAAAAAAAAA4AAEAAAAAAAAAAAA3AAIAAAAAAAAAAAA3AAEAAAAAAAAAAAA2AAEAAAAAAAAAAAA1AAEAAAAAAAAAAAA2AAIAAAAAAAAAAAA1AAIAAAAAAAAAAAA1AAMAAAAAAAAAAAA0AAMAAAAAAAAAAAA4AAIAAAAAAAAAAAA5AAIAAAAAAAAAAAA3AAMAAAAAAAAAAAA4AAMAAAAAAAAAAAA5AAMAAAAAAAAAAAA2AAMAAAAAAAAAAAA0AAIAAAAAAAAAAAA0AAEAAAAAAAAAAAAzAAEAAAAAAAAAAAAyAAEAAAAAAAAAAAA5AAEAAAAAAAAAAAA5AAAAAAAAAAAAAAA5AP//AAAAAAAAAAA5AP7/AAAAAAAAAAA5AP3/AAAAAAAAAAA5APz/AAAAAAAAAAA5APv/AAAAAAAAAAA5APr/AAAAAAAAAAA5APn/AAAAAAAAAAA5APj/AAAAAAAAAAAbAP3/AAAAAAAAAAAcAP3/AAAAAAAAAAAdAP3/AAAAAAAAAAAeAP3/AAAAAAAAAAAfAPn/AAAAAAAAAAAgAPn/AAAAAAAAAAAhAPn/AAAAAAAAAAAiAPn/AAAAAAAAAAAjAPn/AAAAAAAAAAAkAPn/AAAAAAAAAAAwAPr/AAAAAAAAAAAvAPr/AAAAAAAAAAAuAPr/AAAAAAAAAAAtAPr/AAAAAAAAAAAsAPr/AAAAAAAAAAArAPr/AAAAAAAAAAAqAPr/AAAAAAAAAAA1APf/AAAAAAAAAAA0APf/AAAAAAAAAAApAPr/AAAAAAAAAAAqAPn/AAAAAAAAAAA1APj/AAAAAAAAAAA0APj/AAAAAAAAAAAzAPf/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_iao46")
 
-[node name="Player" parent="." instance=ExtResource("2_1yd7u")]
+[node name="Player" parent="." instance=ExtResource("2_fvbjx")]
 position = Vector2(-147, 3)
 metadata/_edit_group_ = true
 
 [node name="Destructible" type="Node" parent="."]
 
-[node name="Destructible" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(63, -13)
 
-[node name="Destructible2" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible2" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(8, -11)
 
-[node name="Destructible3" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible3" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(183, -78)
 
-[node name="Destructible4" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible4" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(530, -47)
 
-[node name="Destructible5" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible5" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(857, 19)
 
-[node name="Destructible6" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible6" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(753, 22)
 
-[node name="Destructible7" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible7" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(843, -143)
 
-[node name="Destructible8" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible8" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(1314, -11)
 
-[node name="Destructible9" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible9" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(1656, -301)
 
-[node name="Destructible10" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible10" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(1346, -237)
-spec = ExtResource("4_1qbkx")
+spec = ExtResource("4_6p3kh")
 
-[node name="Destructible11" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible11" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(1007, -270)
-spec = ExtResource("4_1qbkx")
+spec = ExtResource("4_6p3kh")
 
-[node name="Destructible12" parent="Destructible" instance=ExtResource("6_wt135")]
+[node name="Destructible12" parent="Destructible" instance=ExtResource("3_njj81")]
 position = Vector2(409, -204)
-spec = ExtResource("4_1qbkx")
+spec = ExtResource("4_6p3kh")
 
-[node name="Trigger" parent="." instance=ExtResource("5_4wyds")]
+[node name="Trigger" parent="." instance=ExtResource("5_s2c0e")]
 
-[node name="Trigger2" parent="." instance=ExtResource("5_4wyds")]
+[node name="Trigger2" parent="." instance=ExtResource("5_s2c0e")]
 position = Vector2(647, 30)
 
-[node name="Touchscreen" parent="." instance=ExtResource("6_vxqgb")]
+[node name="Touchscreen" parent="." instance=ExtResource("6_f5u4d")]

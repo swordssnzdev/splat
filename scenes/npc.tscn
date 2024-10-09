@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dqkrc1rvj8jx3" path="res://assets/sounds/npc/low/ew/e05.wav" id="11_cpsmp"]
 [ext_resource type="AudioStream" uid="uid://cfjvk4ohma3g2" path="res://assets/sounds/npc/low/ew/e06.wav" id="12_rbm0a"]
 [ext_resource type="AudioStream" uid="uid://dt1tywcb4oh4v" path="res://assets/sounds/npc/low/ew/e07.wav" id="13_ksdf7"]
-[ext_resource type="Script" path="res://scripts/wanderer.gd" id="14_uhxei"]
+[ext_resource type="PackedScene" uid="uid://dlis3u1w82csd" path="res://scenes/wanderer.tscn" id="14_d6ego"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4tqen"]
 radius = 13.0
@@ -107,26 +107,9 @@ position = Vector2(-2, -4)
 stream = SubResource("AudioStreamRandomizer_j0gv4")
 volume_db = 7.287
 
-[node name="Wanderer" type="Node2D" parent="." node_paths=PackedStringArray("sprite_2d", "animation_player")]
-script = ExtResource("14_uhxei")
+[node name="Wanderer" parent="." node_paths=PackedStringArray("sprite_2d", "animation_player") instance=ExtResource("14_d6ego")]
 sprite_2d = NodePath("../Sprite2D")
 animation_player = NodePath("../AnimationPlayer")
-
-[node name="RayCast2DRightFloor" type="RayCast2D" parent="Wanderer"]
-position = Vector2(0, -16)
-target_position = Vector2(16, 24)
-
-[node name="RayCast2DLeftFloor" type="RayCast2D" parent="Wanderer"]
-position = Vector2(0, -16)
-target_position = Vector2(-16, 24)
-
-[node name="RayCast2DRightWall" type="RayCast2D" parent="Wanderer"]
-position = Vector2(0, -16)
-target_position = Vector2(21, 8)
-
-[node name="RayCast2DLeftWall" type="RayCast2D" parent="Wanderer"]
-position = Vector2(0, -16)
-target_position = Vector2(-21, 8)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
