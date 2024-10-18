@@ -29,6 +29,8 @@ tile_set = SubResource("TileSet_iao46")
 
 [node name="Player" parent="." instance=ExtResource("2_fvbjx")]
 position = Vector2(-147, 3)
+collision_layer = 1
+collision_mask = 1
 metadata/_edit_group_ = true
 
 [node name="Destructible" type="Node" parent="."]
@@ -73,8 +75,13 @@ position = Vector2(409, -204)
 spec = ExtResource("4_6p3kh")
 
 [node name="Trigger" parent="." instance=ExtResource("5_s2c0e")]
+position = Vector2(-73, -2)
+collision_layer = 1
+collision_mask = 1
 
 [node name="Trigger2" parent="." instance=ExtResource("5_s2c0e")]
 position = Vector2(647, 30)
+collision_layer = 1
+collision_mask = 1
 
 [node name="Touchscreen" parent="." instance=ExtResource("6_f5u4d")]

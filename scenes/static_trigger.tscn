@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdd2dgck7opf5"]
+[gd_scene load_steps=7 format=3 uid="uid://qlhnht8wlm2n"]
 
 [ext_resource type="Texture2D" uid="uid://dx638ra4egpyv" path="res://assets/sprites/flowerbox.png" id="1_inne6"]
 [ext_resource type="Script" path="res://scripts/static_trigger.gd" id="1_rpo0a"]
@@ -56,3 +56,6 @@ libraries = {
 }
 
 [node name="Trigger" parent="." instance=ExtResource("2_5dpwj")]
+position = Vector2(-73, -2)
+collision_layer = 1
+collision_mask = 1
