@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b1qbfjvcn5t6"]
+[gd_scene load_steps=9 format=4 uid="uid://b1qbfjvcn5t6"]
 
 [ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="1_uhk33"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_h1eyu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://go1awbfw1b3b" path="res://scenes/npc.tscn" id="4_cp1mo"]
 [ext_resource type="Resource" path="res://resources/npc4.tres" id="5_x6okm"]
 [ext_resource type="PackedScene" uid="uid://bj128ccoaj84m" path="res://scenes/wandering_trigger.tscn" id="6_6ty4m"]
+[ext_resource type="Resource" uid="uid://b127spvhjowts" path="res://resources/trigger_medium.tres" id="7_hohr8"]
 [ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible.tscn" id="7_xootq"]
 
 [node name="LevelPark" type="Node2D"]
@@ -51,6 +52,7 @@ spec = ExtResource("5_x6okm")
 
 [node name="WanderingTrigger" parent="Triggers" instance=ExtResource("6_6ty4m")]
 position = Vector2(377, 17)
+spec = ExtResource("7_hohr8")
 
 [node name="Destructible" type="Node" parent="."]
 

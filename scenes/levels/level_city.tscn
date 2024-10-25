@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://be2nmdoijr3bo"]
+[gd_scene load_steps=18 format=4 uid="uid://be2nmdoijr3bo"]
 
 [ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="1_l6rhn"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_flnrk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" path="res://resources/npc6.tres" id="12_5r27j"]
 [ext_resource type="Resource" path="res://resources/npc8.tres" id="13_hxk38"]
 [ext_resource type="PackedScene" uid="uid://cdd2dgck7opf5" path="res://scenes/static_trigger.tscn" id="14_1ny7r"]
+[ext_resource type="Resource" uid="uid://ddk7d2fahb7pg" path="res://resources/trigger_basic.tres" id="15_4cx2k"]
 [ext_resource type="Texture2D" uid="uid://dx638ra4egpyv" path="res://assets/sprites/flowerbox.png" id="15_xfwqm"]
 [ext_resource type="PackedScene" uid="uid://bllvy0kbvho51" path="res://scenes/next_level.tscn" id="16_0e5os"]
 
@@ -284,22 +285,27 @@ spec = ExtResource("13_hxk38")
 
 [node name="StaticTrigger" parent="Triggers" instance=ExtResource("14_1ny7r")]
 position = Vector2(67, 0)
+spec = ExtResource("15_4cx2k")
 texture = ExtResource("15_xfwqm")
 
 [node name="StaticTrigger2" parent="Triggers" instance=ExtResource("14_1ny7r")]
 position = Vector2(218, 0)
+spec = ExtResource("15_4cx2k")
 texture = ExtResource("15_xfwqm")
 
 [node name="StaticTrigger3" parent="Triggers" instance=ExtResource("14_1ny7r")]
 position = Vector2(563, 0)
+spec = ExtResource("15_4cx2k")
 texture = ExtResource("15_xfwqm")
 
 [node name="StaticTrigger4" parent="Triggers" instance=ExtResource("14_1ny7r")]
 position = Vector2(885, 0)
+spec = ExtResource("15_4cx2k")
 texture = ExtResource("15_xfwqm")
 
 [node name="StaticTrigger5" parent="Triggers" instance=ExtResource("14_1ny7r")]
 position = Vector2(1623, -64)
+spec = ExtResource("15_4cx2k")
 texture = ExtResource("15_xfwqm")
 
 [node name="NextLevel" parent="." instance=ExtResource("16_0e5os")]

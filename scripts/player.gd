@@ -8,7 +8,7 @@ const BASE_JUMP_VELOCITY = -200.0
 const BASE_BUILDUP_LENGTH = 100
 const BASE_SNZ_INTERVAL = 250
 const SNZ_JUMP_VELOCITY = -450.0
-const RESNZ_RATE_ONE_IN_N = 2;
+const BASE_RESNZ_RATE_ONE_IN_N = 2;
 
 signal trigger
 
@@ -23,6 +23,9 @@ signal trigger
 @onready var recover_audio_stream_player_2d: AudioStreamPlayer2D = $RecoverAudioStreamPlayer2D
 @onready var trigger_audio_stream_player_2d: AudioStreamPlayer2D = $TriggerAudioStreamPlayer2D
 @onready var snz_jump_timer: Timer = $SnzJumpTimer
+
+var snzInterval = BASE_SNZ_INTERVAL
+var resnzRateOneInN = BASE_RESNZ_RATE_ONE_IN_N
 
 var state = State.NO_SNZ
 # Count down to snz
@@ -69,7 +72,7 @@ func goToState(s: State) -> void:
 			covered = false
 			if state == State.RECOVER && !snz_audio_stream_player_2d.is_playing():
 				recover_audio_stream_player_2d.play()
-			nextSnzProgress = 0 if state == State.NO_SNZ else BASE_SNZ_INTERVAL
+			nextSnzProgress = 0 if state == State.NO_SNZ else snzInterval
 			animation_player.play("default")
 			pass
 		State.BUILDUP:
@@ -207,7 +210,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func end_snz():
 	if state == State.SNZ_GROUND || state == State.RESNZ_GROUND:
-		if randi() % RESNZ_RATE_ONE_IN_N == 1:
+		if randi() % resnzRateOneInN == 1:
 			goToState(State.RESNZ_GROUND)
 		else:
 			goToState(State.RECOVER)
@@ -236,7 +239,9 @@ func walk(direction):
 		goToState(State.BLOW)
 	
 
-func _on_trigger() -> void:
+func _on_trigger(interval, resnzRate) -> void:
+	snzInterval = interval
+	resnzRateOneInN = resnzRate
 	if state == State.NO_SNZ:
 		trigger_audio_stream_player_2d.play()
 		goToState(State.DEFAULT)
