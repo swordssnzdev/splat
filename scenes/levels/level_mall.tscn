@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://dbrscevv4etiw"]
+[gd_scene load_steps=9 format=4 uid="uid://dbrscevv4etiw"]
 
 [ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="1_ixl6m"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_dxl7e"]
 [ext_resource type="TileSet" uid="uid://djpuqftshi2yx" path="res://assets/tiles/city_v1.tres" id="3_fmxnu"]
-[ext_resource type="PackedScene" uid="uid://nu6r18clndtg" path="res://scenes/levels/level_restaurant.tscn" id="5_lfcnp"]
 [ext_resource type="PackedScene" uid="uid://go1awbfw1b3b" path="res://scenes/npc.tscn" id="6_bp5tb"]
 [ext_resource type="Resource" path="res://resources/npc3.tres" id="9_13yms"]
 [ext_resource type="Resource" path="res://resources/npc5.tres" id="11_e3s7l"]
@@ -40,7 +39,7 @@ metadata/_edit_group_ = true
 
 [node name="NextLevel" parent="." instance=ExtResource("17_vpr7h")]
 position = Vector2(-991, 3)
-NextScene = ExtResource("5_lfcnp")
+NextSceneName = "restaurant"
 
 [node name="Npcs" type="Node" parent="."]
 

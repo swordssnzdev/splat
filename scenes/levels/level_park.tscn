@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b1qbfjvcn5t6"]
+[gd_scene load_steps=10 format=4 uid="uid://b1qbfjvcn5t6"]
 
 [ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="1_uhk33"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_h1eyu"]
@@ -9,7 +9,6 @@
 [ext_resource type="Resource" uid="uid://b127spvhjowts" path="res://resources/trigger_medium.tres" id="7_hohr8"]
 [ext_resource type="PackedScene" uid="uid://chhq0erdkrp78" path="res://scenes/descructible.tscn" id="7_xootq"]
 [ext_resource type="PackedScene" uid="uid://bllvy0kbvho51" path="res://scenes/next_level.tscn" id="9_5gvl2"]
-[ext_resource type="PackedScene" uid="uid://dbrscevv4etiw" path="res://scenes/levels/level_mall.tscn" id="10_6py0l"]
 
 [node name="LevelPark" type="Node2D"]
 
@@ -204,4 +203,4 @@ position = Vector2(944, -66)
 
 [node name="NextLevel" parent="." instance=ExtResource("9_5gvl2")]
 position = Vector2(649, -11)
-NextScene = ExtResource("10_6py0l")
+NextSceneName = "mall"

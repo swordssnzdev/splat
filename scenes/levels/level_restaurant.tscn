@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://nu6r18clndtg"]
+[gd_scene load_steps=19 format=4 uid="uid://nu6r18clndtg"]
 
 [ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="1_lg5a5"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_e46oo"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d3yilawex2nc2" path="res://scenes/animated_trigger.tscn" id="4_hmmhy"]
 [ext_resource type="PackedScene" uid="uid://bllvy0kbvho51" path="res://scenes/next_level.tscn" id="4_sby71"]
 [ext_resource type="PackedScene" uid="uid://go1awbfw1b3b" path="res://scenes/npc.tscn" id="6_5f0gw"]
-[ext_resource type="PackedScene" uid="uid://be2nmdoijr3bo" path="res://scenes/levels/level_city.tscn" id="6_hp0xm"]
 [ext_resource type="Resource" uid="uid://bdniaq4r7ro3s" path="res://resources/npc1_right.tres" id="7_7ibai"]
 [ext_resource type="Resource" uid="uid://1dbylx3lhjci" path="res://resources/npc5_right.tres" id="8_pq31r"]
 [ext_resource type="Resource" uid="uid://4hdb4xq4srq" path="res://resources/npc2_left.tres" id="8_wul5g"]
@@ -20,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://dgrcvdf4m3qh4" path="res://resources/npc6_right.tres" id="16_6k3yg"]
 [ext_resource type="Resource" uid="uid://bcr66iqfttd1o" path="res://resources/npc8_left.tres" id="17_yd5s8"]
 
-[node name="LevelCity" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="Touchscreen" parent="." instance=ExtResource("1_lg5a5")]
 
@@ -56,10 +55,6 @@ position = Vector2(272, 0)
 
 [node name="AnimatedTrigger3" parent="Triggers" instance=ExtResource("4_hmmhy")]
 position = Vector2(494, 1)
-
-[node name="NextLevel" parent="." instance=ExtResource("4_sby71")]
-position = Vector2(-991, 3)
-NextScene = ExtResource("6_hp0xm")
 
 [node name="Npcs" type="Node" parent="."]
 
@@ -125,7 +120,7 @@ spec = ExtResource("12_ibttp")
 
 [node name="NPC17" parent="Npcs" instance=ExtResource("6_5f0gw")]
 position = Vector2(815, 4)
-spec = ExtResource("8_pq31r")
+spec = ExtResource("13_w6hqq")
 
 [node name="NPC18" parent="Npcs" instance=ExtResource("6_5f0gw")]
 position = Vector2(867, 4)
@@ -134,3 +129,7 @@ spec = ExtResource("11_24glg")
 [node name="NPC2" parent="Npcs" instance=ExtResource("6_5f0gw")]
 position = Vector2(-306, 5)
 spec = ExtResource("8_wul5g")
+
+[node name="NextLevel" parent="." instance=ExtResource("4_sby71")]
+position = Vector2(-967, -6)
+NextSceneName = "city"

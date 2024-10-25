@@ -309,3 +309,4 @@ spec = ExtResource("15_4cx2k")
 texture = ExtResource("15_xfwqm")
 
 [node name="NextLevel" parent="." instance=ExtResource("16_0e5os")]
+NextSceneName = "park"
