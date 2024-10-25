@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/wandering_trigger.gd" id="1_xpv73"]
 [ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="2_noifc"]
-[ext_resource type="PackedScene" path="res://scenes/wanderer.tscn" id="4_04d0b"]
+[ext_resource type="PackedScene" uid="uid://dvmlytxs17x04" path="res://scenes/wanderer.tscn" id="4_04d0b"]
 [ext_resource type="Texture2D" uid="uid://bsew71gxvwdjx" path="res://assets/sprites/strimmer_man.png" id="4_q3yyw"]
 
 [sub_resource type="Animation" id="Animation_xe1lf"]

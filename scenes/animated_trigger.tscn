@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3yilawex2nc2"]
+
+[ext_resource type="Script" path="res://scripts/static_trigger.gd" id="1_fwlk0"]
+[ext_resource type="Resource" uid="uid://ddk7d2fahb7pg" path="res://resources/trigger_basic.tres" id="2_egyno"]
+[ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="3_2prkm"]
+[ext_resource type="Texture2D" uid="uid://c8gr220aylyes" path="res://assets/sprites/waiter.png" id="3_mjop3"]
+[ext_resource type="Script" path="res://scenes/animated_trigger.gd" id="4_4o3ye"]
+
+[sub_resource type="Animation" id="Animation_qdgbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ksk17"]
+resource_name = "activate"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwybl"]
+_data = {
+"RESET": SubResource("Animation_qdgbb"),
+"activate": SubResource("Animation_ksk17")
+}
+
+[node name="AnimatedTrigger" type="Node2D"]
+script = ExtResource("1_fwlk0")
+spec = ExtResource("2_egyno")
+texture = ExtResource("3_mjop3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -16)
+texture = ExtResource("3_mjop3")
+hframes = 4
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwybl")
+}
+script = ExtResource("4_4o3ye")
+
+[node name="Trigger" parent="." instance=ExtResource("3_2prkm")]

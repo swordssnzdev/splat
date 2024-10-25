@@ -20,6 +20,8 @@ var state = State.DEFAULT
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sprite_2d.set_texture(spec.texture)
+	if spec.direction == NpcResource.NpcDirection.LEFT:
+		sprite_2d.set_flip_h(true)
 	setRandomAudios(ew_audio_stream_player_2d, spec.audio_folder, "ew")
 	setRandomAudios(comment_audio_stream_player_2d, spec.audio_folder, "comment")
 
@@ -50,7 +52,10 @@ func goToState(s: State):
 	
 	match s:
 		State.DEFAULT:
-			animation_player.play("walk")
+			if spec.shouldWander():
+				animation_player.play("walk")
+			else:
+				sprite_2d.set_frame(0)
 			pass
 		State.HIT, State.HEARD:
 			timer.start()
@@ -69,7 +74,8 @@ func _process(delta: float) -> void:
 	# print(str(state) + " " + str(ray_cast_2d_left_floor.is_colliding()) + " " + str(ray_cast_2d_right_floor.is_colliding()) + " " + str(ray_cast_2d_left_wall.is_colliding()) + " " +str(ray_cast_2d_right_wall.is_colliding()) + "")
 	match state:
 		State.DEFAULT, State.HIT, State.HEARD:
-			position.x += wanderer.wander(delta)
+			if spec.shouldWander():
+				position.x += wanderer.wander(delta)
 		State.EW:
 			pass
 

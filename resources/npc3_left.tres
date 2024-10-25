@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NpcResource" load_steps=3 format=3 uid="uid://bmjijxt2v05px"]
+
+[ext_resource type="Script" path="res://scripts/resources/npc_resource.gd" id="1_5v5ks"]
+[ext_resource type="Texture2D" uid="uid://c71u2xed0y0tj" path="res://assets/sprites/npc3.png" id="2_dasos"]
+
+[resource]
+script = ExtResource("1_5v5ks")
+texture = ExtResource("2_dasos")
+audio_folder = "low"
+direction = 0
