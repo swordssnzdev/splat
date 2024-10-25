@@ -117,7 +117,7 @@ func goToState(s: State) -> void:
 	state = s
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("reset") || self.get_position().y > 500:
+	if Input.is_action_just_pressed("reset") || self.get_position().y > 250:
 		die()
 		return
 	
