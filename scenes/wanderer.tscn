@@ -1,11 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlis3u1w82csd"]
+[gd_scene load_steps=2 format=3 uid="uid://dvmlytxs17x04"]
 
 [ext_resource type="Script" path="res://scripts/wanderer.gd" id="1_44dk3"]
 
-[node name="Wanderer" type="Node2D" node_paths=PackedStringArray("sprite_2d", "animation_player")]
+[node name="Wanderer" type="Node2D"]
 script = ExtResource("1_44dk3")
-sprite_2d = NodePath("")
-animation_player = NodePath("")
 
 [node name="RayCast2DRightFloor" type="RayCast2D" parent="."]
 position = Vector2(0, -16)

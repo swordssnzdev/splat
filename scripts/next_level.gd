@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var NextScene: PackedScene
+@export var NextSceneName: String
 @onready var timer: Timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
@@ -19,4 +19,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_packed(NextScene)
+	get_tree().change_scene_to_file("res://scenes/levels/level_" + NextSceneName + ".tscn")

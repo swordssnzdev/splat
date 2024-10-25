@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TriggerResource" load_steps=2 format=3 uid="uid://b127spvhjowts"]
+
+[ext_resource type="Script" path="res://scripts/resources/trigger_resource.gd" id="1_w5ywx"]
+
+[resource]
+script = ExtResource("1_w5ywx")
+Interval = 200
+ResnzRate = 3
