@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://dns32jyx834hm"]
+
+[ext_resource type="Script" path="res://scripts/snz_npc.gd" id="1_2cc06"]
+[ext_resource type="Texture2D" uid="uid://6ig82wh7ie4n" path="res://assets/sprites/snz_npc1.png" id="2_jhybr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4tqen"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_4afya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mb6sa"]
+resource_name = "walk"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_d0kxh"]
+resource_name = "snz"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 2, 3, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sniu5"]
+_data = {
+"RESET": SubResource("Animation_4afya"),
+"snz": SubResource("Animation_d0kxh"),
+"walk": SubResource("Animation_mb6sa")
+}
+
+[node name="SnzNPC" type="Area2D"]
+position = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_2cc06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 40
+position = Vector2(-3, -18)
+texture = ExtResource("2_jhybr")
+vframes = 6
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -20)
+shape = SubResource("CapsuleShape2D_4tqen")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sniu5")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="SnzAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 200.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
