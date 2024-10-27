@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="NpcResource" load_steps=3 format=3 uid="uid://deo42rdgnw0f6"]
+[gd_resource type="Resource" script_class="NpcResource" load_steps=4 format=3 uid="uid://deo42rdgnw0f6"]
 
 [ext_resource type="Script" path="res://scripts/resources/npc_resource.gd" id="1_b273r"]
+[ext_resource type="Resource" uid="uid://bkc14a8v2gqda" path="res://resources/npc_wavset_high.tres" id="1_di0t1"]
 [ext_resource type="Texture2D" uid="uid://bl3awne241v8x" path="res://assets/sprites/npc2.png" id="2_f32xr"]
 
 [resource]
 script = ExtResource("1_b273r")
 texture = ExtResource("2_f32xr")
-audio_folder = "high"
+audio = ExtResource("1_di0t1")
 direction = 1
