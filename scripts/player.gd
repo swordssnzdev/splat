@@ -11,6 +11,7 @@ const SNZ_JUMP_VELOCITY = -450.0
 const BASE_RESNZ_RATE_ONE_IN_N = 2;
 
 signal trigger
+signal infect
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -28,6 +29,7 @@ var snzInterval = BASE_SNZ_INTERVAL
 var resnzRateOneInN = BASE_RESNZ_RATE_ONE_IN_N
 
 var state = State.NO_SNZ
+var infected = false
 # Count down to snz
 var buildupProgress = BASE_BUILDUP_LENGTH
 # Count down to start of buildup
@@ -206,7 +208,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		"recover", "recover_covered":
 			goToState(State.DEFAULT)
 		"blow":
-			goToState(State.NO_SNZ)
+			if infected:
+				goToState(State.DEFAULT)
+			else:
+				goToState(State.NO_SNZ)
 
 func end_snz():
 	if state == State.SNZ_GROUND || state == State.RESNZ_GROUND:
@@ -244,4 +249,10 @@ func _on_trigger(interval, resnzRate) -> void:
 	resnzRateOneInN = resnzRate
 	if state == State.NO_SNZ:
 		trigger_audio_stream_player_2d.play()
+		goToState(State.DEFAULT)
+
+
+func _on_infect() -> void:
+	infected = true
+	if state == State.NO_SNZ:
 		goToState(State.DEFAULT)

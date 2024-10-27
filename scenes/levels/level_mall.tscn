@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=4 uid="uid://dbrscevv4etiw"]
 
-[ext_resource type="PackedScene" path="res://scenes/touchscreen.tscn" id="1_ixl6m"]
+[ext_resource type="PackedScene" uid="uid://ddbw3shgvuvaq" path="res://scenes/touchscreen.tscn" id="1_ixl6m"]
 [ext_resource type="PackedScene" uid="uid://tmvbbkdw2g81" path="res://scenes/player.tscn" id="2_dxl7e"]
 [ext_resource type="TileSet" uid="uid://djpuqftshi2yx" path="res://assets/tiles/city_v1.tres" id="3_fmxnu"]
 [ext_resource type="PackedScene" uid="uid://go1awbfw1b3b" path="res://scenes/npc.tscn" id="6_bp5tb"]
-[ext_resource type="Resource" path="res://resources/npc3.tres" id="9_13yms"]
-[ext_resource type="Resource" path="res://resources/npc5.tres" id="11_e3s7l"]
-[ext_resource type="Resource" path="res://resources/npc8.tres" id="13_8l712"]
+[ext_resource type="Resource" uid="uid://cvcq6vxi453ji" path="res://resources/npc3.tres" id="9_13yms"]
+[ext_resource type="Resource" uid="uid://be4gryx3tuwro" path="res://resources/npc5.tres" id="11_e3s7l"]
+[ext_resource type="Resource" uid="uid://dwbkkfyct47kn" path="res://resources/npc8.tres" id="13_8l712"]
 [ext_resource type="PackedScene" uid="uid://bllvy0kbvho51" path="res://scenes/next_level.tscn" id="17_vpr7h"]
 
 [node name="LevelCity" type="Node2D"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d3yilawex2nc2"]
 
 [ext_resource type="Script" path="res://scripts/static_trigger.gd" id="1_fwlk0"]
-[ext_resource type="Resource" uid="uid://ddk7d2fahb7pg" path="res://resources/trigger_basic.tres" id="2_egyno"]
+[ext_resource type="Resource" uid="uid://bgfhva25w1rpu" path="res://resources/trigger_intense.tres" id="2_31wim"]
 [ext_resource type="PackedScene" uid="uid://d3djr16fwtnr2" path="res://scenes/trigger.tscn" id="3_2prkm"]
 [ext_resource type="Texture2D" uid="uid://c8gr220aylyes" path="res://assets/sprites/waiter.png" id="3_mjop3"]
 [ext_resource type="Script" path="res://scenes/animated_trigger.gd" id="4_4o3ye"]
@@ -46,7 +46,7 @@ _data = {
 
 [node name="AnimatedTrigger" type="Node2D"]
 script = ExtResource("1_fwlk0")
-spec = ExtResource("2_egyno")
+spec = ExtResource("2_31wim")
 texture = ExtResource("3_mjop3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SnzNpcSpec" load_steps=6 format=3 uid="uid://cql4fkqkoy7f6"]
+
+[ext_resource type="Script" path="res://scripts/resources/snz_npc_resource.gd" id="1_jvj26"]
+[ext_resource type="Texture2D" uid="uid://b18iwd6018h6e" path="res://assets/sprites/snz_npc3.png" id="2_negon"]
+[ext_resource type="AudioStream" uid="uid://pgfu8hfa3fpu" path="res://assets/sounds/npc/high/snz/s01.wav" id="3_jwp3m"]
+[ext_resource type="AudioStream" uid="uid://c88t5758ta40i" path="res://assets/sounds/npc/high/snz/s02.wav" id="4_mcexx"]
+[ext_resource type="AudioStream" uid="uid://oj3yunt7g4ao" path="res://assets/sounds/npc/high/snz/s03.wav" id="5_d14kh"]
+
+[resource]
+script = ExtResource("1_jvj26")
+texture = ExtResource("2_negon")
+wavs = Array[AudioStream]([ExtResource("3_jwp3m"), ExtResource("4_mcexx"), ExtResource("5_d14kh")])

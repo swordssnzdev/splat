@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="NpcWavset" load_steps=16 format=3 uid="uid://bkc14a8v2gqda"]
+
+[ext_resource type="AudioStream" uid="uid://b2gf6ummqqs2k" path="res://assets/sounds/npc/high/comment/c01.wav" id="1_g018u"]
+[ext_resource type="AudioStream" uid="uid://n6vjypxcopm7" path="res://assets/sounds/npc/high/comment/c02.wav" id="2_mf554"]
+[ext_resource type="AudioStream" uid="uid://colpilkixxxu" path="res://assets/sounds/npc/high/comment/c03.wav" id="3_x2t6e"]
+[ext_resource type="AudioStream" uid="uid://c7f8x0vvcqep8" path="res://assets/sounds/npc/high/comment/c04.wav" id="4_b16fd"]
+[ext_resource type="AudioStream" uid="uid://bbscpjpbvakur" path="res://assets/sounds/npc/high/ew/e01.wav" id="5_1bvmm"]
+[ext_resource type="AudioStream" uid="uid://cd02jplsebu4n" path="res://assets/sounds/npc/high/ew/e02.wav" id="6_va5l5"]
+[ext_resource type="AudioStream" uid="uid://dtw8byuuw1o1x" path="res://assets/sounds/npc/high/ew/e03.wav" id="7_y8dkk"]
+[ext_resource type="AudioStream" uid="uid://cap5ql8rx5eud" path="res://assets/sounds/npc/high/ew/e04.wav" id="8_mly2i"]
+[ext_resource type="AudioStream" uid="uid://ddie1mfy5ilq4" path="res://assets/sounds/npc/high/ew/e05.wav" id="9_luis2"]
+[ext_resource type="AudioStream" uid="uid://ctehss4cs8bhr" path="res://assets/sounds/npc/high/ew/e06.wav" id="10_een0m"]
+[ext_resource type="AudioStream" uid="uid://eruprbbgnsmm" path="res://assets/sounds/npc/high/ew/e07.wav" id="11_yb23e"]
+[ext_resource type="Script" path="res://scripts/resources/npc_wavset.gd" id="12_e5mra"]
+[ext_resource type="AudioStream" uid="uid://pgfu8hfa3fpu" path="res://assets/sounds/npc/high/snz/s01.wav" id="13_idrpy"]
+[ext_resource type="AudioStream" uid="uid://c88t5758ta40i" path="res://assets/sounds/npc/high/snz/s02.wav" id="14_yl741"]
+[ext_resource type="AudioStream" uid="uid://oj3yunt7g4ao" path="res://assets/sounds/npc/high/snz/s03.wav" id="15_jiecr"]
+
+[resource]
+script = ExtResource("12_e5mra")
+ew = Array[AudioStream]([ExtResource("5_1bvmm"), ExtResource("6_va5l5"), ExtResource("7_y8dkk"), ExtResource("8_mly2i"), ExtResource("9_luis2"), ExtResource("10_een0m"), ExtResource("11_yb23e")])
+comment = Array[AudioStream]([ExtResource("1_g018u"), ExtResource("2_mf554"), ExtResource("3_x2t6e"), ExtResource("4_b16fd")])
+snz = Array[AudioStream]([ExtResource("13_idrpy"), ExtResource("14_yl741"), ExtResource("15_jiecr")])
