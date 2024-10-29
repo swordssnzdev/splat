@@ -10,6 +10,7 @@ extends Area2D
 func _ready() -> void:
 	sprite_2d.set_texture(spec.texture)
 	setRandomAudios(snz_audio_stream_player_2d, spec.wavs)
+	snz_audio_stream_player_2d.volume_db = -3
 	timer.start(randf_range(1, 10))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

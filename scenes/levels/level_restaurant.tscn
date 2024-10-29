@@ -132,4 +132,4 @@ spec = ExtResource("8_wul5g")
 
 [node name="NextLevel" parent="." instance=ExtResource("4_sby71")]
 position = Vector2(-967, -6)
-NextSceneName = "city"
+NextSceneName = "office"

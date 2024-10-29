@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SnzNpcSpec" load_steps=6 format=3 uid="uid://dj3rf13mic8ei"]
+[gd_resource type="Resource" script_class="SnzNpcSpec" load_steps=6 format=3 uid="uid://c6lktrg4p1qkq"]
 
 [ext_resource type="Script" path="res://scripts/resources/snz_npc_resource.gd" id="1_ilgbr"]
 [ext_resource type="Texture2D" uid="uid://bq3x4beihdutg" path="res://assets/sprites/snz_npc2.png" id="2_hgwd5"]

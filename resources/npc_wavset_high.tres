@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="NpcWavset" load_steps=16 format=3 uid="uid://bkc14a8v2gqda"]
+[gd_resource type="Resource" script_class="NpcWavset" load_steps=16 format=3 uid="uid://brr84jhyqav47"]
 
 [ext_resource type="AudioStream" uid="uid://b2gf6ummqqs2k" path="res://assets/sounds/npc/high/comment/c01.wav" id="1_g018u"]
 [ext_resource type="AudioStream" uid="uid://n6vjypxcopm7" path="res://assets/sounds/npc/high/comment/c02.wav" id="2_mf554"]
