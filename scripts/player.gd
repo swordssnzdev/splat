@@ -252,7 +252,9 @@ func _on_trigger(interval, resnzRate) -> void:
 		goToState(State.DEFAULT)
 
 
-func _on_infect() -> void:
+func _on_infect(interval, resnzRate) -> void:
+	snzInterval = interval
+	resnzRateOneInN = resnzRate
 	infected = true
 	if state == State.NO_SNZ:
 		goToState(State.DEFAULT)
